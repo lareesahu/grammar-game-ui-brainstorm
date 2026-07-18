@@ -329,8 +329,10 @@ function setCaps(c){caps=c;['normal','lowercase','uppercase','capitalize'].forEa
 function setLS(v){ls=v;document.getElementById('lsSelect').value=v;updatePreview()}
 
 function updateKerning(){
-  const f=fonts[picks.font]||'sans-serif';
-  document.querySelectorAll('#kernGrid .word,#spaceGrid .word').forEach(el=>{el.style.fontFamily=f;el.style.fontWeight='800'});
+  try{
+    const f=fonts[picks.font]||'sans-serif';
+    document.querySelectorAll('#kernGrid .word,#spaceGrid .word').forEach(el=>{el.style.fontFamily=f;el.style.fontWeight='800'});
+  }catch(e){}
 }
 
 function applyCaps(text){
@@ -341,6 +343,7 @@ function applyCaps(text){
 }
 
 function updatePreview(){
+  try{
   const f=fonts[picks.font]||'sans-serif';
   const bf=bodyFonts[picks.type]||'sans-serif';
   const p=palettes[picks.palette]||palettes.mint;
@@ -354,12 +357,6 @@ function updatePreview(){
   else if(picks.kern==='loose'){txt='G r a m l i n g o';wm.style.letterSpacing='.15em'}
   else {txt='Gramlingo';wm.style.letterSpacing='0'}
   
-  if(['s04','sNeg','s10','s0'].includes(picks.space)){
-    if(picks.space==='s04')wm.style.letterSpacing='.04em';
-    else if(picks.space==='sNeg')wm.style.letterSpacing='-.02em';
-    else if(picks.space==='s10')wm.style.letterSpacing='.10em';
-    else wm.style.letterSpacing='0';
-  }
   wm.style.letterSpacing=ls+'em';
   wm.textContent=applyCaps(txt);
   wm.style.color=p.primary;
@@ -380,6 +377,7 @@ function updatePreview(){
   
   // Swatches
   document.getElementById('pvSwatches').innerHTML=p.swatches.map(c=>`<span style="background:${c}"></span>`).join('');
+  }catch(e){}
 }
 
 function exportBrand(){
@@ -410,7 +408,10 @@ TYPOGRAPHY: ${fns[picks.font]} headings + ${ts[picks.type]} body
 }
 function copyBrand(){exportBrand();navigator.clipboard.writeText(document.getElementById('result').textContent).then(()=>alert('Copied!'))}
 
-updateKerning();updatePreview();
+document.addEventListener('DOMContentLoaded',()=>{
+  try{updateKerning()}catch(e){}
+  try{updatePreview()}catch(e){}
+});
 </script>
 </body>
 </html>

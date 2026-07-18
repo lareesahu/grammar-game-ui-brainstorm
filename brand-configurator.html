@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Gramlingo — Brand Configurator</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Fredoka+One&family=Poppins:wght@700;800&family=Nunito:wght@700;800&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0d0d0d;color:#e0e0e0;line-height:1.5;padding:20px}
+.head{text-align:center;padding:50px 20px 30px;background:linear-gradient(180deg,#1a2a22 0%,#0d0d0d 100%)}
+.head h1{font-size:clamp(28px,4vw,48px);font-weight:700;color:#a0dcc0}
+.head p{color:#7a9a8a;font-size:14px;margin-top:6px}
+.section{max-width:1100px;margin:0 auto 40px}
+.section h2{font-size:20px;font-weight:600;color:#a0dcc0;margin-bottom:4px;padding-top:30px;border-top:1px solid #1a2a22}
+.section .sub{font-size:12px;color:#666;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.card{background:#1a1a1a;border:2px solid #2a2a2a;border-radius:14px;padding:16px;cursor:pointer;transition:.2s;position:relative;text-align:center}
+.card:hover{border-color:#5a5a5a;transform:translateY(-1px)}
+.card.selected{border-color:#7ec8a0;box-shadow:0 0 20px rgba(126,200,160,.15)}
+.card.selected::after{content:'✓';position:absolute;top:8px;right:10px;background:#7ec8a0;color:#1a2a22;width:20px;height:20px;border-radius:50%;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.card h3{font-size:14px;font-weight:600;color:#ccc;margin-bottom:6px}
+.card .preview{margin:8px 0;min-height:48px;display:flex;align-items:center;justify-content:center}
+.card .specs{font-size:10px;color:#666;line-height:1.5}
+.card img{border-radius:10px;max-width:100%;max-height:120px;object-fit:contain}
+
+/* Preview area */
+.preview-area{background:#111;border:2px solid #2a2a2a;border-radius:16px;padding:24px;margin-top:20px;text-align:center}
+.preview-area .label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.preview-area .big-wordmark{font-size:clamp(32px,6vw,60px);font-weight:800;margin:8px 0}
+.preview-area .tagline{font-size:15px;color:#888;margin:8px 0}
+.preview-area .btn-preview{margin:10px 4px;display:inline-block;padding:10px 24px;border-radius:20px;font-size:14px;font-weight:700;cursor:default}
+.preview-area .swatches-row{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.preview-area .swatches-row span{width:36px;height:36px;border-radius:8px;display:inline-block}
+
+/* Kerning previews */
+.kern-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.kern-opt{background:#111;border:2px solid #2a2a2a;border-radius:10px;padding:12px 16px;cursor:pointer;transition:.2s;text-align:center}
+.kern-opt:hover{border-color:#5a5a5a}
+.kern-opt.selected{border-color:#7ec8a0}
+.kern-opt .word{font-size:22px;font-weight:800;margin-bottom:2px}
+.kern-opt .tag{font-size:10px;color:#666}
+
+.export-row{max-width:600px;margin:30px auto;text-align:center}
+.export-row button{padding:12px 28px;border-radius:24px;font-size:14px;font-weight:700;border:none;cursor:pointer;margin:4px}
+.btn-sub{background:#7ec8a0;color:#1a2a22}
+.btn-out{background:transparent;border:2px solid #7ec8a0;color:#7ec8a0}
+
+/* Result summary */
+.result{background:#111;border:2px solid #2a2a2a;border-radius:14px;padding:20px;margin-top:16px;display:none;font-family:monospace;font-size:12px;color:#7a9a8a;white-space:pre-wrap;line-height:1.8}
+.result .val{color:#a0dcc0;font-weight:600}
+
+footer{text-align:center;padding:40px 20px;color:#444;font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>🧌 Gramlingo — Brand Configurator</h1>
+  <p>Click to select in each category. Live preview updates with your choices.</p>
+</div>
+
+<!-- ===== 1. ICON ===== -->
+<div class="section">
+  <h2>1. Icon — Pick One</h2>
+  <div class="sub">Primary app icon / logo mark</div>
+  <div class="grid" id="iconGrid">
+    <div class="card selected" data-choice="pencil" onclick="selectIcon(this,'pencil')">
+      <h3>A. Pencil Gramlin</h3>
+      <img src="C:\Users\hunin\AppData\Local\hermes\cache\images\volcengine_doubao-seedream-4-0-250828_20260718_232524_ee821e1c.jpg" alt="Gramlin with pencil" onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+      <div class="fallback" style="display:none;font-size:40px;min-height:80px;align-items:center;justify-content:center">🧌✏️</div>
+      <div class="specs">Holding oversized pencil. "Writing the rules."</div>
+    </div>
+    <div class="card" data-choice="book" onclick="selectIcon(this,'book')">
+      <h3>B. Bookworm Gramlin</h3>
+      <img src="C:\Users\hunin\AppData\Local\hermes\cache\images\volcengine_doubao-seedream-4-0-250828_20260718_233619_733f67ef.jpg" alt="Gramlin reading" onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+      <div class="fallback" style="display:none;font-size:40px;min-height:80px;align-items:center;justify-content:center">🧌📖</div>
+      <div class="specs">Reading tiny book. "Curious learner."</div>
+    </div>
+    <div class="card" data-choice="grad" onclick="selectIcon(this,'grad')">
+      <h3>C. Graduate Gramlin</h3>
+      <img src="C:\Users\hunin\AppData\Local\hermes\cache\images\volcengine_doubao-seedream-4-0-250828_20260718_233634_7e1e5afa.jpg" alt="Graduate Gramlin" onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+      <div class="fallback" style="display:none;font-size:40px;min-height:80px;align-items:center;justify-content:center">🧌🎓</div>
+      <div class="specs">Graduation cap + diploma. "Mastery achieved."</div>
+    </div>
+    <div class="card" data-choice="juggler" onclick="selectIcon(this,'juggler')">
+      <h3>D. Juggler Gramlin</h3>
+      <img src="C:\Users\hunin\AppData\Local\hermes\cache\images\volcengine_doubao-seedream-4-0-250828_20260718_233648_7e89395c.jpg" alt="Juggling Gramlin" onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+      <div class="fallback" style="display:none;font-size:40px;min-height:80px;align-items:center;justify-content:center">🧌,.</div>
+      <div class="specs">Juggling punctuation. "Grammar is play."</div>
+    </div>
+    <div class="card" data-choice="sleeper" onclick="selectIcon(this,'sleeper')">
+      <h3>E. Sleepy Gramlin</h3>
+      <img src="C:\Users\hunin\AppData\Local\hermes\cache\images\volcengine_doubao-seedream-4-0-250828_20260718_233705_74dd96b5.jpg" alt="Sleeping Gramlin" onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex'">
+      <div class="fallback" style="display:none;font-size:40px;min-height:80px;align-items:center;justify-content:center">🧌💤</div>
+      <div class="specs">Curled on rulebook. "Grammar dreams."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 2. FONT ===== -->
+<div class="section">
+  <h2>2. Logo Font — Pick One</h2>
+  <div class="sub">The typeface for the "Gramlingo" wordmark</div>
+  <div class="grid" id="fontGrid">
+    <div class="card selected" data-choice="baloo" onclick="selectFont(this,'baloo')">
+      <h3>A. Baloo 2</h3>
+      <div class="preview" style="font-family:'Baloo 2',cursive;font-size:28px;font-weight:800">Gramlingo</div>
+      <div class="specs">Playful, rounded, heavy. Built for display. Friendly + confident.</div>
+    </div>
+    <div class="card" data-choice="fredoka" onclick="selectFont(this,'fredoka')">
+      <h3>B. Fredoka One</h3>
+      <div class="preview" style="font-family:'Fredoka One',cursive;font-size:26px">Gramlingo</div>
+      <div class="specs">Extra rounded, wider. Feels like a toy brand. Most playful.</div>
+    </div>
+    <div class="card" data-choice="poppins" onclick="selectFont(this,'poppins')">
+      <h3>C. Poppins</h3>
+      <div class="preview" style="font-family:'Poppins',sans-serif;font-size:26px;font-weight:800;letter-spacing:-.02em">Gramlingo</div>
+      <div class="specs">Geometric sans. Most versatile. Professional + friendly.</div>
+    </div>
+    <div class="card" data-choice="nunito" onclick="selectFont(this,'nunito')">
+      <h3>D. Nunito</h3>
+      <div class="preview" style="font-family:'Nunito',sans-serif;font-size:26px;font-weight:800">Gramlingo</div>
+      <div class="specs">Rounded but restrained. Good for body copy too. One-font brand.</div>
+    </div>
+    <div class="card" data-choice="comic" onclick="selectFont(this,'comic')">
+      <h3>E. Comic Neue</h3>
+      <div class="preview" style="font-family:'Comic Neue',cursive;font-size:24px;font-weight:700">Gramlingo</div>
+      <div class="specs">Handwriting feel without Comic Sans shame. Approachable.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 3. KERNING ===== -->
+<div class="section">
+  <h2>3. Letter Kerning — Pick One</h2>
+  <div class="sub">Spacing between letter pairs — updates with your font choice</div>
+  <div class="kern-row" id="kernGrid">
+    <div class="kern-opt selected" data-choice="split" onclick="selectKern(this,'split')">
+      <div class="word" id="kernSplit">Gram·lingo</div>
+      <div class="tag">Split — tight/loose</div>
+    </div>
+    <div class="kern-opt" data-choice="tight" onclick="selectKern(this,'tight')">
+      <div class="word" id="kernTight">Gramlingo</div>
+      <div class="tag">Tight -0.04em</div>
+    </div>
+    <div class="kern-opt" data-choice="normal" onclick="selectKern(this,'normal')">
+      <div class="word" id="kernNormal">Gramlingo</div>
+      <div class="tag">Normal 0</div>
+    </div>
+    <div class="kern-opt" data-choice="loose" onclick="selectKern(this,'loose')">
+      <div class="word" id="kernLoose">G r a m l i n g o</div>
+      <div class="tag">Loose +0.15em</div>
+    </div>
+    <div class="kern-opt" data-choice="capsmix" onclick="selectKern(this,'capsmix')">
+      <div class="word" id="kernMix"><span style="letter-spacing:.04em">GRAM</span><span style="letter-spacing:-.02em">lingo</span></div>
+      <div class="tag">Caps mix GRAM/lingo</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 4. LETTER SPACING ===== -->
+<div class="section">
+  <h2>4. Letter Spacing — Pick One</h2>
+  <div class="sub">Overall tracking value</div>
+  <div class="kern-row" id="spaceGrid">
+    <div class="kern-opt selected" data-choice="s04" onclick="selectSpace(this,'s04')">
+      <div class="word" id="spaceSnug">Gramlingo</div>
+      <div class="tag">+0.04em snug</div>
+    </div>
+    <div class="kern-opt" data-choice="sNeg" onclick="selectSpace(this,'sNeg')">
+      <div class="word" id="spaceTight">Gramlingo</div>
+      <div class="tag">-0.02em tight display</div>
+    </div>
+    <div class="kern-opt" data-choice="s10" onclick="selectSpace(this,'s10')">
+      <div class="word" id="spaceAiry">Gramlingo</div>
+      <div class="tag">+0.10em airy</div>
+    </div>
+    <div class="kern-opt" data-choice="s0" onclick="selectSpace(this,'s0')">
+      <div class="word" id="spaceDefault">Gramlingo</div>
+      <div class="tag">0 default</div>
+    </div>
+    <div class="kern-opt" data-choice="sDual" onclick="selectSpace(this,'sDual')">
+      <div class="word" id="spaceDual"><span style="letter-spacing:.04em">GRAM</span><span style="letter-spacing:-.02em">lingo</span></div>
+      <div class="tag">Dual tracking</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 5. COLOR PALETTE ===== -->
+<div class="section">
+  <h2>5. Color Palette — Pick One</h2>
+  <div class="sub">Primary · Background · Accent · Correct · Wrong</div>
+  <div class="grid" id="paletteGrid">
+    <div class="card selected" data-choice="mint" onclick="selectPalette(this,'mint')">
+      <h3>A. Mint Forest</h3>
+      <div class="swatches-row"><span style="background:#7ec8a0"></span><span style="background:#2d4a3e"></span><span style="background:#f0faf5"></span><span style="background:#e8828a"></span><span style="background:#5cb878"></span></div>
+      <div class="specs">Fresh, friendly, natural. Current live theme.</div>
+    </div>
+    <div class="card" data-choice="sunset" onclick="selectPalette(this,'sunset')">
+      <h3>B. Sunset Gramlin</h3>
+      <div class="swatches-row"><span style="background:#ff8c42"></span><span style="background:#2d1b10"></span><span style="background:#fff5ee"></span><span style="background:#e07070"></span><span style="background:#4caf50"></span></div>
+      <div class="specs">Warm, energetic. Golden hour vibes.</div>
+    </div>
+    <div class="card" data-choice="lavender" onclick="selectPalette(this,'lavender')">
+      <h3>C. Lavender Haze</h3>
+      <div class="swatches-row"><span style="background:#b39ddb"></span><span style="background:#1a1530"></span><span style="background:#f5f0ff"></span><span style="background:#e57388"></span><span style="background:#66bb6a"></span></div>
+      <div class="specs">Dreamy, creative. Fantasy Gramlin.</div>
+    </div>
+    <div class="card" data-choice="cyber" onclick="selectPalette(this,'cyber')">
+      <h3>D. Cyber Gramlin</h3>
+      <div class="swatches-row"><span style="background:#00ff88"></span><span style="background:#0d1117"></span><span style="background:#161b22"></span><span style="background:#ff4757"></span><span style="background:#00cc66"></span></div>
+      <div class="specs">Dark mode native. Hacker energy.</div>
+    </div>
+    <div class="card" data-choice="paper" onclick="selectPalette(this,'paper')">
+      <h3>E. Paper + Ink</h3>
+      <div class="swatches-row"><span style="background:#1a1a1a"></span><span style="background:#faf3e0"></span><span style="background:#fdf8ef"></span><span style="background:#c44"></span><span style="background:#2d7d3a"></span></div>
+      <div class="specs">Printed page. Premium textbook.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 6. TYPOGRAPHY COMBO ===== -->
+<div class="section">
+  <h2>6. Body Typography — Pick a Pair</h2>
+  <div class="sub">Heading font is your logo font. Body font for long text.</div>
+  <div class="grid" id="typeGrid">
+    <div class="card selected" data-choice="nunito" onclick="selectType(this,'nunito')">
+      <h3>A. + Nunito</h3>
+      <div class="specs">Same rounded family. Most consistent. Reads well EN+ZH.</div>
+    </div>
+    <div class="card" data-choice="inter" onclick="selectType(this,'inter')">
+      <h3>B. + Inter</h3>
+      <div class="specs">Industry standard body font. Neutral, lets heading shine.</div>
+    </div>
+    <div class="card" data-choice="dmsans" onclick="selectType(this,'dmsans')">
+      <h3>C. + DM Sans</h3>
+      <div class="specs">Clean geometric. SaaS feel. Good for admin screens.</div>
+    </div>
+    <div class="card" data-choice="atkinson" onclick="selectType(this,'atkinson')">
+      <h3>D. + Atkinson Hyperlegible</h3>
+      <div class="specs">Maximum accessibility. Braille Institute designed.</div>
+    </div>
+    <div class="card" data-choice="system" onclick="selectType(this,'system')">
+      <h3>E. System UI</h3>
+      <div class="specs">Native OS font stack. Zero loading. Always works.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LIVE PREVIEW ===== -->
+<div class="section">
+  <h2>Live Preview</h2>
+  <div class="preview-area" id="livePreview">
+    <div class="label">Updates with your selections</div>
+    <div class="big-wordmark" id="pvWordmark">Gramlingo</div>
+    <div class="tagline">Grammar Quest — Learn by playing.</div>
+    <div>
+      <span class="btn-preview" id="pvPrimary">Primary CTA</span>
+      <span class="btn-preview" id="pvOutline">Outline</span>
+      <span class="btn-preview" id="pvCorrect">Correct ✓</span>
+      <span class="btn-preview" id="pvWrong">Wrong ✗</span>
+    </div>
+    <div class="swatches-row" id="pvSwatches"></div>
+  </div>
+</div>
+
+<!-- ===== EXPORT ===== -->
+<div class="export-row">
+  <button class="btn-sub" onclick="exportBrand()">📋 Export Brand Spec</button>
+  <button class="btn-out" onclick="copyBrand()">📝 Copy to Clipboard</button>
+</div>
+<div class="result" id="result"></div>
+
+<footer>Gramlingo Brand Configurator · All choices are yours</footer>
+
+<script>
+// State
+let picks = {icon:'pencil',font:'baloo',kern:'split',space:'s04',palette:'mint',type:'nunito'};
+
+// Font families mapping
+const fonts = {
+  baloo: "'Baloo 2', cursive",
+  fredoka: "'Fredoka One', cursive",
+  poppins: "'Poppins', sans-serif",
+  nunito: "'Nunito', sans-serif",
+  comic: "'Comic Neue', cursive"
+};
+
+// Palette mappings
+const palettes = {
+  mint: {primary:'#7ec8a0',bg:'#f0faf5',dark:'#2d4a3e',text:'#3d5a4e',dim:'#7a9a8a',correct:'#5cb878',wrong:'#e8828a',swatches:['#7ec8a0','#2d4a3e','#f0faf5','#e8828a','#5cb878']},
+  sunset: {primary:'#ff8c42',bg:'#fff5ee',dark:'#2d1b10',text:'#3d2e1e',dim:'#8a6a50',correct:'#4caf50',wrong:'#e07070',swatches:['#ff8c42','#2d1b10','#fff5ee','#e07070','#4caf50']},
+  lavender: {primary:'#b39ddb',bg:'#f5f0ff',dark:'#1a1530',text:'#3d3a5e',dim:'#6a5a8a',correct:'#66bb6a',wrong:'#e57388',swatches:['#b39ddb','#1a1530','#f5f0ff','#e57388','#66bb6a']},
+  cyber: {primary:'#00ff88',bg:'#0d1117',dark:'#0d1117',text:'#e0e0e0',dim:'#666',correct:'#00cc66',wrong:'#ff4757',swatches:['#00ff88','#0d1117','#161b22','#ff4757','#00cc66']},
+  paper: {primary:'#1a1a1a',bg:'#faf3e0',dark:'#faf3e0',text:'#2d2d2d',dim:'#888',correct:'#2d7d3a',wrong:'#c44',swatches:['#1a1a1a','#faf3e0','#fdf8ef','#c44','#2d7d3a']}
+};
+
+// Kern spacings
+const kernSpacings = {split:{t:"Gram·lingo",s:"-.02em/.06em"},tight:{t:"Gramlingo",s:"-0.04em"},normal:{t:"Gramlingo",s:"0"},loose:{t:"G r a m l i n g o",s:"+0.15em"}};
+const spaceVals = {s04:".04em",sNeg:"-.02em",s10:".10em",s0:"0"};
+
+function selectIcon(el,val){picks.icon=val;renderGrid('iconGrid',el);updatePreview()}
+function selectFont(el,val){picks.font=val;renderGrid('fontGrid',el);updateKerning();updatePreview()}
+function selectKern(el,val){picks.kern=val;renderKern(el);updatePreview()}
+function selectSpace(el,val){picks.space=val;renderSpace(el);updatePreview()}
+function selectPalette(el,val){picks.palette=val;renderGrid('paletteGrid',el);updatePreview()}
+function selectType(el,val){picks.type=val;renderGrid('typeGrid',el);updatePreview()}
+
+function renderGrid(id,el){
+  document.querySelectorAll('#'+id+' .card,#'+id+' .kern-opt').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function renderKern(el){document.querySelectorAll('#kernGrid .kern-opt').forEach(c=>c.classList.remove('selected'));el.classList.add('selected')}
+function renderSpace(el){document.querySelectorAll('#spaceGrid .kern-opt').forEach(c=>c.classList.remove('selected'));el.classList.add('selected')}
+
+function updateKerning(){
+  const f = fonts[picks.font]||'sans-serif';
+  const fn = picks.font==='comic'?'font-weight:700':'font-weight:800';
+  document.querySelectorAll('#kernGrid .word, #spaceGrid .word').forEach(el=>{
+    el.style.fontFamily=f;el.style.cssText+=fn;
+  });
+}
+
+function updatePreview(){
+  const f = fonts[picks.font]||'sans-serif';
+  const p = palettes[picks.palette]||palettes.mint;
+  
+  // Wordmark
+  const wm = document.getElementById('pvWordmark');
+  wm.style.fontFamily = f;
+  wm.style.fontWeight = '800';
+  wm.style.color = p.primary;
+  if(picks.kern==='split'){wm.style.letterSpacing='-.02em';wm.textContent='Gram·lingo'}
+  else if(picks.kern==='tight'){wm.style.letterSpacing='-.04em';wm.textContent='Gramlingo'}
+  else if(picks.kern==='loose'){wm.style.letterSpacing='.15em';wm.textContent='G r a m l i n g o'}
+  else {wm.style.letterSpacing='0';wm.textContent='Gramlingo'}
+  
+  if(picks.space==='s04')wm.style.letterSpacing='.04em';
+  else if(picks.space==='sNeg')wm.style.letterSpacing='-.02em';
+  else if(picks.space==='s10')wm.style.letterSpacing='.10em';
+  else if(picks.space==='s0')wm.style.letterSpacing='0';
+  
+  // BG
+  document.getElementById('livePreview').style.background = p.bg;
+  
+  // Buttons
+  const prim = document.getElementById('pvPrimary');prim.style.background=p.primary;prim.style.color=p.dark;
+  const out = document.getElementById('pvOutline');out.style.background='transparent';out.style.border='2px solid '+p.primary;out.style.color=p.primary;
+  const corr = document.getElementById('pvCorrect');corr.style.background=p.correct;corr.style.color='#fff';
+  const wr = document.getElementById('pvWrong');wr.style.background=p.wrong;wr.style.color='#fff';
+  
+  // Swatches
+  document.getElementById('pvSwatches').innerHTML = p.swatches.map(c=>`<span style="background:${c}"></span>`).join('');
+  
+  // Body text color
+  document.getElementById('livePreview').style.color = p.text;
+}
+
+function exportBrand(){
+  const p = palettes[picks.palette]||palettes.mint;
+  const f = fonts[picks.font]||'sans-serif';
+  const iconNames = {pencil:'Pencil Gramlin',book:'Bookworm Gramlin',grad:'Graduate Gramlin',juggler:'Juggler Gramlin',sleeper:'Sleepy Gramlin'};
+  const fontNames = {baloo:'Baloo 2',fredoka:'Fredoka One',poppins:'Poppins',nunito:'Nunito',comic:'Comic Neue'};
+  const kernNames = {split:'Split Gram·lingo',tight:'Tight -0.04em',normal:'Normal 0',loose:'Loose +0.15em',capsmix:'GRAM/lingo caps mix'};
+  const spaceNames = {s04:'+0.04em snug',sNeg:'-0.02em tight display',s10:'+0.10em airy',s0:'0 default',sDual:'Dual tracking'};
+  const paletteNames = {mint:'Mint Forest',sunset:'Sunset Gramlin',lavender:'Lavender Haze',cyber:'Cyber Gramlin',paper:'Paper + Ink'};
+  const typeNames = {nunito:'+ Nunito',inter:'+ Inter',dmsans:'+ DM Sans',atkinson:'+ Atkinson Hyperlegible',system:'+ System UI'};
+  
+  const r = `=== GRAMLINGO BRAND SPEC ===
+
+ICON: ${iconNames[picks.icon]}
+FONT: ${fontNames[picks.font]}
+KERNING: ${kernNames[picks.kern]}
+LETTER SPACING: ${spaceNames[picks.space]}
+PALETTE: ${paletteNames[picks.palette]}
+  Primary: ${p.primary}  Background: ${p.bg}
+  Dark: ${p.dark}  Correct: ${p.correct}  Wrong: ${p.wrong}
+TYPOGRAPHY: ${fontNames[picks.font]} headings + ${typeNames[picks.type]} body
+  
+=== CSS ===
+--blue:${p.primary};--bg:${p.bg};--black:${p.dark};
+--green:${p.correct};--red:${p.wrong};
+--fp:${f};--fm:monospace;
+`;
+  
+  document.getElementById('result').style.display='block';
+  document.getElementById('result').innerHTML = r.replace(/\n/g,'<br>').replace(/===/g,'<b>===').replace(/CSS/g,'<b>CSS');
+}
+function copyBrand(){
+  exportBrand();
+  navigator.clipboard.writeText(document.getElementById('result').textContent).then(()=>alert('Brand spec copied!'));
+}
+
+// Init
+updateKerning();
+updatePreview();
+</script>
+</body>
+</html>

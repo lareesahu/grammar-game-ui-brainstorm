@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Gramlin — Character Reference Sheet</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f0faf5;color:#2d4a3e;line-height:1.5;padding:24px}
+.wrap{max-width:1100px;margin:0 auto}
+.head{text-align:center;padding:48px 20px 32px}
+.head h1{font-size:clamp(32px,5vw,56px);font-weight:800;color:#2d4a3e;letter-spacing:-.5px}
+.head h1 span{color:#7ec8a0}
+.head p{font-size:15px;color:#7a9a8a;margin-top:6px}
+.palette{display:flex;gap:8px;justify-content:center;margin:16px 0}
+.palette span{width:28px;height:28px;border-radius:6px;display:inline-block}
+.section{margin:40px 0}
+.section h2{font-size:22px;font-weight:700;color:#2d4a3e;margin-bottom:4px;padding-bottom:8px;border-bottom:2px solid #c8e8d4}
+.section .sub{font-size:12px;color:#7a9a8a;margin-bottom:16px}
+.section img{width:100%;max-width:100%;border-radius:12px;box-shadow:0 4px 24px rgba(45,74,62,.08);display:block}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:24px}
+.card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 16px rgba(45,74,62,.06)}
+.card h3{font-size:16px;font-weight:600;color:#2d4a3e;margin-bottom:8px}
+.card p{font-size:13px;color:#7a9a8a;line-height:1.5}
+footer{text-align:center;padding:40px 20px;color:#7a9a8a;font-size:12px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="head">
+  <h1>🧌 Gramlin <span>· Character Reference</span></h1>
+  <p>Gramlingo mascot — grammar gremlin. Model sheet for animation & app production.</p>
+  <div class="palette">
+    <span style="background:#7ec8a0"></span><span style="background:#2d4a3e"></span><span style="background:#f0faf5"></span><span style="background:#e8828a"></span><span style="background:#5cb878"></span>
+  </div>
+</div>
+
+<!-- TURNAROUND -->
+<div class="section">
+  <h2>1. Four-View Turnaround</h2>
+  <div class="sub">Front · Side · 3/4 · Back — neutral pose, no props, constancy locked</div>
+  <img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-refsheet-4view.png" alt="4-view turnaround">
+</div>
+
+<!-- PROPS -->
+<div class="section">
+  <h2>2. Prop Variations</h2>
+  <div class="sub">Pencil · Graduation cap · Book · Speech bubble — same character, four tools</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>✏️ Pencil</h3>
+      <p>Writing tool — "Writing the rules." Perfect for grammar instruction scenes and hero banner lockup.</p>
+    </div>
+    <div class="card">
+      <h3>🎓 Graduation Cap</h3>
+      <p>Mastery achieved — "Level complete!" Use for phase completion screens and achievement badges.</p>
+    </div>
+    <div class="card">
+      <h3>📖 Book</h3>
+      <p>Curious learner — "Grammar dreams." Use for loading screens, study mode, and library views.</p>
+    </div>
+    <div class="card">
+      <h3>💬 Speech Bubble</h3>
+      <p>Communication — "Grammar is play." Use for dialogue, hints, encouragement popups.</p>
+    </div>
+  </div>
+  <img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-refsheet-props.png" alt="Prop variations" style="margin-top:20px">
+</div>
+
+<!-- EXPRESSIONS -->
+<div class="section">
+  <h2>3. Expression Sheet</h2>
+  <div class="sub">Six emotions — constancy locked across all states</div>
+  <div class="grid2">
+    <div class="card"><h3>🤩 Excited</h3><p>Star eyes + wide grin. Use for: correct streak, unlocking new phase, daily bonus.</p></div>
+    <div class="card"><h3>😲 Surprised</h3><p>Wide eyes + open mouth. Use for: unexpected answer, new feature discovery, easter egg.</p></div>
+    <div class="card"><h3>😢 Sad</h3><p>Squinted eyes + frown. Use for: wrong answer, lost streak, encouragement needed.</p></div>
+    <div class="card"><h3>😌 Content</h3><p>Closed eyes + gentle smile. Use for: idle state, completed review, calm notification.</p></div>
+    <div class="card"><h3>😛 Playful</h3><p>Half-closed eyes + tongue out. Use for: cheeky hints, retry prompt, gamification popup.</p></div>
+    <div class="card"><h3>😂 Joyful</h3><p>Star eyes + big laugh. Use for: 100% completion, perfect score, milestone celebration.</p></div>
+  </div>
+  <img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-refsheet-expressions.png" alt="Expression sheet" style="margin-top:20px">
+</div>
+
+<!-- BRAND SPEC -->
+<div class="section">
+  <h2>4. Brand Spec</h2>
+  <div class="sub">Locked from brand configurator — all values confirmed</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>🎨 Palette</h3>
+      <p>Primary: <code>#ff8c42</code> Sunset Orange<br>Background: <code>#fff5ee</code> Warm Cream<br>Dark: <code>#2d1b10</code> Deep Brown<br>Correct: <code>#4caf50</code> Green<br>Wrong: <code>#e07070</code> Soft Red</p>
+    </div>
+    <div class="card">
+      <h3>🔤 Typography</h3>
+      <p>Logo: <code>Baloo 2</code> · Weight 700 · Uppercase<br>Body: <code>System UI</code> · Natural OS font stack<br>Kerning: Normal 0 · Spacing: +0.18em</p>
+    </div>
+    <div class="card">
+      <h3>🧩 Components</h3>
+      <p>Buttons: 18-20px pill radius<br>Cards: rounded, soft shadow<br>Icons: Juggler Gramlin<br>Nav: dark glass morphism</p>
+    </div>
+    <div class="card">
+      <h3>📐 CSS Export</h3>
+      <p><code>--blue:#ff8c42;--bg:#fff5ee;--black:#2d1b10;<br>--green:#4caf50;--red:#e07070;<br>--fp:'Baloo 2',cursive;--fm:monospace;</code></p>
+    </div>
+  </div>
+</div>
+
+<footer>Gramlingo Character Reference · Gramlin-Go! · All assets in lareesahu/grammar-game-ui-brainstorm</footer>
+
+</div>
+</body>
+</html>

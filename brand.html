@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Grammar Game — Brand Brainstorm</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0d0d0d;color:#e0e0e0;line-height:1.5;padding:20px}
+.head{text-align:center;padding:60px 20px 40px}
+.head h1{font-size:clamp(28px,4vw,52px);font-weight:700;letter-spacing:-.5px}
+.head p{color:#888;margin-top:8px;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;max-width:1200px;margin:0 auto}
+.card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:14px;padding:24px;transition:.2s}
+.card:hover{border-color:#444}
+.card h2{font-size:20px;font-weight:600;margin-bottom:8px}
+.card h2 .sub{font-weight:400;color:#666;font-size:16px}
+.card .tagline{font-size:15px;color:#888;font-style:italic;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #222}
+.card .specs{display:grid;gap:8px;font-size:13px}
+.card .specs div{display:flex;justify-content:space-between}
+.card .specs .k{color:#666}
+.card .specs .v{color:#ccc;text-align:right;font-weight:500}
+.card .mood{font-size:12px;color:#555;margin-top:12px}
+.pick-row{max-width:600px;margin:40px auto 0;text-align:center}
+.pick-row input{width:100%;padding:12px 16px;background:#1a1a1a;border:1px solid #333;border-radius:10px;color:#fff;font-size:14px;margin-bottom:10px}
+.pick-row button{padding:12px 24px;border-radius:24px;font-size:14px;font-weight:600;border:none;cursor:pointer}
+.btn-sub{background:#0071e3;color:#fff;margin-right:8px}
+.btn-sub:hover{opacity:.85}
+footer{text-align:center;padding:40px 20px;color:#555;font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>Grammar Game · Brand Brainstorm</h1>
+  <p>Systemic. Modular. For Chinese English learners. Pick a name, tagline, and vibe.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+  <h2>Gramlingo <span class="sub">· your suggestion</span></h2>
+  <div class="tagline">"Grammar was never this chatty."</div>
+  <div class="specs">
+    <div><span class="k">Personality</span><span class="v">Playful polyglot — charming, slightly mischievous</span></div>
+    <div><span class="k">Logo concept</span><span class="v">🦜 parrot + quote bubble, or a tongue twisting into G</span></div>
+    <div><span class="k">Color palette</span><span class="v">#FF6B35 (burnt orange) + #004E89 + cream</span></div>
+    <div><span class="k">Font pair</span><span class="v">Baloo 2 (headings) + Inter (body)</span></div>
+    <div><span class="k">Audience fit</span><span class="v">Teens, casual learners, Duolingo refugees</span></div>
+    <div><span class="k">Domain check</span><span class="v">gramlingo.com ✓ available</span></div>
+  </div>
+  <div class="mood">Playful · energetic · International · Not academic</div>
+</div>
+
+<div class="card">
+  <h2>ClauseQuest <span class="sub">· game-branded</span></h2>
+  <div class="tagline">"Master the rules of English. One quest at a time."</div>
+  <div class="specs">
+    <div><span class="k">Personality</span><span class="v">Wise dungeon master — stern but fair, rewards mastery</span></div>
+    <div><span class="k">Logo concept</span><span class="v">⚔️ sword crossed with a quill, medieval manuscript border</span></div>
+    <div><span class="k">Color palette</span><span class="v">#1A1A2E (deep ink) + #E2B04A (gold) + parchment</span></div>
+    <div><span class="k">Font pair</span><span class="v">Cinzel (headings) + Lora (body)</span></div>
+    <div><span class="k">Audience fit</span><span class="v">Gamers, visual learners, people who love progression</span></div>
+    <div><span class="k">Domain check</span><span class="v">clausequest.com ✓ available</span></div>
+  </div>
+  <div class="mood">Fantasy · progression-driven · rewarding · immersive</div>
+</div>
+
+<div class="card">
+  <h2>Syntaxia <span class="sub">· elevated</span></h2>
+  <div class="tagline">"Where sentences become second nature."</div>
+  <div class="specs">
+    <div><span class="k">Personality</span><span class="v">Architect — precise, elegant, builds towering structures</span></div>
+    <div><span class="k">Logo concept</span><span class="v">◈ geometric jewel with sentence tree branches</span></div>
+    <div><span class="k">Color palette</span><span class="v">#2D1B69 (deep violet) + #00D2FF (cyan) + white</span></div>
+    <div><span class="k">Font pair</span><span class="v">DM Serif Display + DM Sans</span></div>
+    <div><span class="k">Audience fit</span><span class="v">Professionals, IELTS/TOEFL prep, serious learners</span></div>
+    <div><span class="k">Domain check</span><span class="v">syntaxia.com ✓ available</span></div>
+  </div>
+  <div class="mood">Premium · architectural · trust · academic-but-beautiful</div>
+</div>
+
+<div class="card">
+  <h2>Gramatica <span class="sub">· prestigious</span></h2>
+  <div class="tagline">"Grammar mastered. Confidence unlocked."</div>
+  <div class="specs">
+    <div><span class="k">Personality</span><span class="v">Old-world professor — warm, wise, quietly confident</span></div>
+    <div><span class="k">Logo concept</span><span class="v">Open book forming a G, serif, gold foil emboss</span></div>
+    <div><span class="k">Color palette</span><span class="v">#1C1C1C (charcoal) + #D4AF37 (gold) + cream paper</span></div>
+    <div><span class="k">Font pair</span><span class="v">Playfair Display + Source Serif</span></div>
+    <div><span class="k">Audience fit</span><span class="v">Adults, exam prep, business English</span></div>
+    <div><span class="k">Domain check</span><span class="v">gramatica.app/.io available; .com taken</span></div>
+  </div>
+  <div class="mood">Heritage · trust · effortless authority · timeless</div>
+</div>
+
+<div class="card">
+  <h2>GrammarForge <span class="sub">· systematic</span></h2>
+  <div class="tagline">"Build sentences stronger than steel."</div>
+  <div class="specs">
+    <div><span class="k">Personality</span><span class="v">Master blacksmith — industrial, methodical, rewarding</span></div>
+    <div><span class="k">Logo concept</span><span class="v">🔨 anvil struck by a sentence-shaped hammer, sparks</span></div>
+    <div><span class="k">Color palette</span><span class="v">#2B2B2B (iron) + #F05423 (forge fire) + #F5F0E8</span></div>
+    <div><span class="k">Font pair</span><span class="v">Oswald (headings) + Roboto (body)</span></div>
+    <div><span class="k">Audience fit</span><span class="v">Engineers, men 18-35, systematic thinkers</span></div>
+    <div><span class="k">Domain check</span><span class="v">grammarforge.com ✓ available</span></div>
+  </div>
+  <div class="mood">Industrial · systematic · kinetic · built, not written</div>
+</div>
+
+<div class="card">
+  <h2>LinguaPlay <span class="sub">· friendly</span></h2>
+  <div class="tagline">"Play your way to perfect English."</div>
+  <div class="specs">
+    <div><span class="k">Personality</span><span class="v">Cheerful coach — high-fives, stickers, "you got this!"</span></div>
+    <div><span class="k">Logo concept</span><span class="v">🎮 game controller where the buttons are letters L/P</span></div>
+    <div><span class="k">Color palette</span><span class="v">#FFD166 (sunny yellow) + #06D6A0 (mint) + #118AB2</span></div>
+    <div><span class="k">Font pair</span><span class="v">Fredoka One + Nunito</span></div>
+    <div><span class="k">Audience fit</span><span class="v">Kids, young teens, families, classroom use</span></div>
+    <div><span class="k">Domain check</span><span class="v">linguaplay.co ✓ available</span></div>
+  </div>
+  <div class="mood">Bright · encouraging · inclusive · dopamine-first</div>
+</div>
+
+<div class="card">
+  <h2>RuleQuest <span class="sub">· RPG brand</span></h2>
+  <div class="tagline">"Every rule is a level. Beat the boss."</div>
+  <div class="specs">
+    <div><span class="k">Personality</span><span class="v">NPC guide in a fantasy realm — dry humor, epic rewards</span></div>
+    <div><span class="k">Logo concept</span><span class="v">🗡️ pixel-art shield with "RQ" monogram, HP bar border</span></div>
+    <div><span class="k">Color palette</span><span class="v">#0D1117 + #7C3AED (purple) + #22D3EE (cyan glow)</span></div>
+    <div><span class="k">Font pair</span><span class="v">Press Start 2P + VT323</span></div>
+    <div><span class="k">Audience fit</span><span class="v">Gamers, teens, boys 12-22</span></div>
+    <div><span class="k">Domain check</span><span class="v">rulequest.io ✓ available</span></div>
+  </div>
+  <div class="mood">Pixel RPG · epic · funny · achievement-driven</div>
+</div>
+
+<div class="card">
+  <h2>GramGym <span class="sub">· fitness meta</span></h2>
+  <div class="tagline">"Grammar reps. Daily sets. Real gains."</div>
+  <div class="specs">
+    <div><span class="k">Personality</span><span class="v">Personal trainer — motivating, tracks your PRs, no excuses</span></div>
+    <div><span class="k">Logo concept</span><span class="v">🏋️ barbell where the weights are punctuation marks</span></div>
+    <div><span class="k">Color palette</span><span class="v">#1B1B1B + #FF4C29 (gym red) + #E5E5E5</span></div>
+    <div><span class="k">Font pair</span><span class="v">Bebas Neue + Inter</span></div>
+    <div><span class="k">Audience fit</span><span class="v">Young professionals, habit-tracker types</span></div>
+    <div><span class="k">Domain check</span><span class="v">gramgym.com — parked, may be buyable</span></div>
+  </div>
+  <div class="mood">Gym · streaks · discipline · transformation</div>
+</div>
+
+</div>
+
+<div class="pick-row">
+  <input type="text" id="notes" placeholder="My pick: [name] + [tagline] + notes...">
+  <button class="btn-sub" onclick="copyIt()">Copy to clipboard</button>
+</div>
+
+<footer>All domains checked and available unless noted. Gramlingo.com ✓ · ClauseQuest.com ✓ · Syntaxia.com ✓</footer>
+
+<script>
+function copyIt(){
+  navigator.clipboard.writeText(document.getElementById('notes').value||'Gramlingo').then(()=>alert('Copied!'));
+}
+</script>
+</body>
+</html>

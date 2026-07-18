@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Grammar Game — UI Brainstorm v2</title>
+<style>
+:root{--s:system-ui,-apple-system,sans-serif;--m:ui-monospace,Consolas,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--s);background:#0d0d0d;color:#e0e0e0;line-height:1.5}
+.head{text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#1a1a2e 0%,#0d0d0d 100%)}
+.head h1{font-size:clamp(28px,4vw,52px);font-weight:700;letter-spacing:-.5px}
+.head h1 span{opacity:.4}
+.head p{color:#888;margin-top:8px;font-size:15px}
+.grid{display:grid;grid-template-columns:1fr;max-width:1100px;margin:0 auto;padding:0 20px 60px;gap:60px}
+.style-section h2{font-size:24px;font-weight:600;margin-bottom:4px}
+.style-section .sub{font-size:13px;color:#666;margin-bottom:24px}
+.row{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+
+/* ======== STYLE 5: Studio Ghibli Forest ======== */
+.a5{background:linear-gradient(180deg,#e8f0e3 0%,#d4e6cd 100%);color:#2d4a22;border:2px solid #b8d4a8;border-radius:20px;padding:24px;min-height:140px;position:relative;box-shadow:0 4px 16px rgba(60,100,40,.1)}
+.a5 .label{font-size:11px;font-weight:700;color:#6b9b4a;font-family:Georgia,serif;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.a5 .name{font-size:19px;font-weight:700;line-height:1.3;margin-bottom:4px;color:#1e3a0e;font-family:Georgia,serif}
+.a5 .desc{font-size:12px;color:#5a7a4a;line-height:1.4}
+.a5 .check{display:inline-block;margin-top:10px;font-size:12px;color:#6b9b4a;font-weight:700}
+.a5 .status{position:absolute;top:12px;right:16px;font-size:16px}
+.a5 .lock{opacity:.25}
+.a5q{background:linear-gradient(180deg,#f5faf2 0%,#e8f0e3 100%);border:2px solid #b8d4a8;border-radius:20px;padding:28px 24px;box-shadow:0 4px 16px rgba(60,100,40,.06)}
+.a5q .qprompt{font-size:16px;font-weight:500;color:#2d4a22;margin-bottom:16px;line-height:1.5}
+.a5q .qprompt em{font-style:normal;background:#fef3c7;padding:0 4px;border-radius:3px}
+.a5o{display:block;width:100%;padding:10px 14px;border:2px solid #c8e0b8;border-radius:14px;background:#fff;font-size:13px;text-align:left;color:#3d5e2e;margin-bottom:6px;font-family:Georgia,serif;transition:.15s}
+.a5o:first-of-type{border-color:#6b9b4a;background:#f0f7ea}
+.a5o:last-of-type{background:#dcf5dc;color:#2e7d32;border-color:#81c784}
+.a5o:last-of-type::after{content:' ✓';font-weight:700}
+.a5w{background:#fff;border:2px solid #b8d4a8;border-radius:16px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.a5w .wq{font-size:13px;font-weight:500;color:#3d5e2e;flex:1}
+.a5w .wbadge{background:rgba(211,47,47,.1);color:#c62828;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ======== STYLE 6: Terminal CRT ======== */
+.a6{background:#0a0f0a;color:#33ff33;border:3px solid #1a3a1a;border-radius:8px;padding:24px;min-height:140px;position:relative;box-shadow:0 0 20px rgba(51,255,51,.1),inset 0 0 60px rgba(0,0,0,.5)}
+.a6 .label{font-size:11px;font-weight:700;color:#33ff33;font-family:'Courier New',Courier,monospace;text-transform:uppercase;margin-bottom:6px}
+.a6 .name{font-size:17px;font-weight:700;line-height:1.2;margin-bottom:4px;color:#00ff00;font-family:'Courier New',Courier,monospace}
+.a6 .desc{font-size:11px;color:#228822;line-height:1.4;font-family:'Courier New',Courier,monospace}
+.a6 .check{display:inline-block;margin-top:10px;font-size:12px;color:#33ff33;font-weight:700;font-family:'Courier New',Courier,monospace;cursor:default}
+.a6 .status{position:absolute;top:12px;right:16px;font-size:14px}
+.a6 .lock{opacity:.2}
+.a6q{background:#050a05;border:3px solid #1a3a1a;border-radius:8px;padding:28px 24px;box-shadow:0 0 30px rgba(51,255,51,.05),inset 0 0 80px rgba(0,0,0,.6)}
+.a6q .qprompt{font-size:15px;font-weight:500;color:#33ff33;margin-bottom:16px;line-height:1.5;font-family:'Courier New',Courier,monospace}
+.a6q .qprompt em{font-style:normal;background:#33ff3311;padding:0 2px}
+.a6o{display:block;width:100%;padding:8px 12px;border:2px solid #1a3a1a;background:#080e08;font-size:12px;text-align:left;color:#228822;margin-bottom:6px;font-family:'Courier New',Courier,monospace;transition:.15s;cursor:default}
+.a6o:first-of-type{border-color:#33ff33;background:#0a1a0a;color:#33ff33}
+.a6o:last-of-type{background:#0a1a0a;color:#33ff33;border-color:#33ff33}
+.a6o:last-of-type::after{content:' ✓';font-weight:700}
+.a6w{background:#080e08;border:2px solid #1a3a1a;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.a6w .wq{font-size:12px;font-weight:500;color:#228822;flex:1;font-family:'Courier New',Courier,monospace}
+.a6w .wbadge{background:#1a3a1a;color:#33ff33;border:1px solid #33ff3322;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ======== STYLE 7: Brutalist Paper ======== */
+.a7{background:#f5f0e8;color:#3d3028;border:3px solid #2d2d2d;border-radius:4px;padding:24px;min-height:140px;position:relative;box-shadow:6px 6px 0 #1a1a1a;background-image:url("data:image/svg+xml,%3Csvg width='6' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='6' height='6' fill='none'/%3E%3Crect width='1' height='1' fill='rgba(0,0,0,.03)' x='2' y='2'/%3E%3C/svg%3E")}
+.a7 .label{font-size:9px;font-weight:900;color:#ff6b35;font-family:'Courier New',Courier,monospace;text-transform:uppercase;letter-spacing:3px;margin-bottom:6px}
+.a7 .name{font-size:20px;font-weight:900;line-height:1.1;margin-bottom:4px;color:#1a1a1a;font-family:Georgia,serif}
+.a7 .desc{font-size:11px;color:#555;line-height:1.4;font-family:var(--m)}
+.a7 .check{display:inline-block;margin-top:10px;font-size:12px;color:#ff6b35;font-weight:900}
+.a7 .status{position:absolute;top:12px;right:16px;font-size:14px}
+.a7 .lock{opacity:.2}
+.a7q{background:#faf8f3;border:3px solid #2d2d2d;border-radius:4px;padding:28px 24px;box-shadow:8px 8px 0 #1a1a1a;background-image:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(0,0,0,.03)'/%3E%3C/svg%3E")}
+.a7q .qprompt{font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:16px;line-height:1.5;font-family:Georgia,serif}
+.a7q .qprompt em{font-style:normal;background:#ff6b3522;padding:0 4px}
+.a7o{display:block;width:100%;padding:10px 14px;border:2px solid #2d2d2d;background:#fff;font-size:13px;text-align:left;color:#3d3028;margin-bottom:6px;font-weight:600;transition:.15s;border-radius:2px}
+.a7o:first-of-type{border-color:#ff6b35;border-width:3px}
+.a7o:last-of-type{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.a7o:last-of-type::after{content:' ✓';font-weight:900}
+.a7w{background:#fff;border:2px solid #2d2d2d;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-radius:2px}
+.a7w .wq{font-size:13px;font-weight:600;color:#1a1a1a;flex:1}
+.a7w .wbadge{background:#1a1a1a;color:#fff;padding:2px 8px;font-size:10px;font-weight:900}
+
+/* ======== STYLE 8: Cyber Y2K ======== */
+.a8{background:linear-gradient(135deg,#e8f0fe 0%,#dce4f8 50%,#f0e6ff 100%);color:#1e3a5f;border:3px solid #c0d0f0;border-radius:24px;padding:24px;min-height:140px;position:relative;box-shadow:0 8px 32px rgba(100,140,220,.15),inset 0 2px 0 rgba(255,255,255,.8)}
+.a8 .label{font-size:10px;font-weight:900;color:#7b93c0;font-family:var(--m);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.a8 .name{font-size:17px;font-weight:700;line-height:1.3;margin-bottom:4px;color:#1e3a5f;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+.a8 .desc{font-size:12px;color:#5a7aaa;line-height:1.4}
+.a8 .check{display:inline-block;margin-top:10px;font-size:12px;color:#4a90d9;font-weight:700}
+.a8 .status{position:absolute;top:12px;right:16px;font-size:16px}
+.a8 .lock{opacity:.2}
+.a8q{background:linear-gradient(180deg,#fff 0%,#f0f4ff 100%);border:3px solid #c0d0f0;border-radius:24px;padding:28px 24px;box-shadow:0 8px 32px rgba(100,140,220,.1),inset 0 2px 0 rgba(255,255,255,.9)}
+.a8q .qprompt{font-size:16px;font-weight:500;color:#1e3a5f;margin-bottom:16px;line-height:1.5}
+.a8q .qprompt em{font-style:normal;color:#c070d0;font-weight:600}
+.a8o{display:block;width:100%;padding:10px 14px;border:2px solid #d8e0f8;border-radius:20px;background:rgba(255,255,255,.7);font-size:13px;text-align:left;color:#3d5a80;margin-bottom:6px;backdrop-filter:blur(8px);transition:.15s}
+.a8o:first-of-type{border-color:#8ab4f8;background:rgba(138,180,248,.08)}
+.a8o:last-of-type{background:rgba(52,199,89,.1);color:#2e7d32;border-color:rgba(52,199,89,.3)}
+.a8o:last-of-type::after{content:' ✓';font-weight:700}
+.a8w{background:rgba(255,255,255,.8);border:2px solid #d8e0f8;border-radius:20px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;backdrop-filter:blur(12px)}
+.a8w .wq{font-size:13px;font-weight:500;color:#3d5a80;flex:1}
+.a8w .wbadge{background:rgba(255,107,107,.12);color:#e74c3c;border-radius:12px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ======== STYLE 9: Mono Noir ======== */
+.a9{background:#ffffff;color:#000000;border:1px solid #000;padding:24px;min-height:140px;position:relative}
+.a9 .label{font-size:10px;font-weight:400;color:#888;margin-bottom:16px;letter-spacing:3px;text-transform:uppercase}
+.a9 .name{font-size:22px;font-weight:300;line-height:1.05;margin-bottom:4px;color:#000;letter-spacing:-.5px}
+.a9 .desc{font-size:12px;color:#666;line-height:1.4;font-weight:300}
+.a9 .check{display:block;margin-top:16px;font-size:11px;color:#000;font-weight:400;border-bottom:1px solid #000;padding-bottom:2px}
+.a9 .status{position:absolute;bottom:16px;right:20px;font-size:12px;font-weight:300}
+.a9 .lock{opacity:.15}
+.a9q{background:#fff;border:1px solid #000;padding:28px 24px}
+.a9q .qprompt{font-size:17px;font-weight:300;color:#000;margin-bottom:20px;line-height:1.5;letter-spacing:-.3px}
+.a9q .qprompt em{font-style:normal;border-bottom:1px solid #000;padding-bottom:1px}
+.a9o{display:block;width:100%;padding:12px 16px;border:1px solid #ddd;background:#fff;font-size:13px;text-align:left;color:#000;margin-bottom:4px;font-weight:300;transition:.15s}
+.a9o:first-of-type{border-color:#000;border-width:2px}
+.a9o:last-of-type{background:#000;color:#fff;border-color:#000}
+.a9o:last-of-type::after{content:' ✓'}
+.a9w{background:#fff;border:1px solid #000;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:3px solid #000}
+.a9w .wq{font-size:13px;font-weight:300;color:#000;flex:1}
+.a9w .wbadge{background:#000;color:#fff;padding:2px 8px;font-size:10px;font-weight:400}
+
+.legend{margin-top:8px;font-size:12px;color:#666;display:flex;gap:20px;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px}
+
+.foot{max-width:1100px;margin:0 auto 40px;padding:0 20px}
+.foot textarea{width:100%;min-height:80px;background:#1a1a1a;color:#ccc;border:1px solid #333;border-radius:8px;padding:12px;font-family:var(--s);font-size:14px;resize:vertical;margin-bottom:10px}
+.foot .btn-row{display:flex;gap:10px;flex-wrap:wrap}
+.foot button{padding:10px 20px;border-radius:24px;font-size:14px;font-weight:600;border:none;cursor:pointer;font-family:var(--s);transition:.2s}
+.btn-sub{background:#0071e3;color:#fff}
+.btn-copy{background:transparent;color:#0071e3;border:1px solid #0071e3}
+.btn-down{background:#0a0a0a;color:#888;border:1px solid #333}
+
+@media(max-width:600px){
+  .head{padding:36px 16px 28px}
+  .row{grid-template-columns:1fr}
+  .grid{gap:40px;padding:0 12px 40px}
+}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>Grammar Game · UI Brainstorm v2 <span>— styles 5-9</span></h1>
+  <p>Dark + Light mix. Each row: phase card → question card → wrong-bank entry</p>
+</div>
+
+<div class="grid">
+
+<!-- STYLE 5 -->
+<div class="style-section">
+  <h2>5. Studio Ghibli Forest <span style="font-weight:400;color:#666;font-size:14px">— warm, organic, playful</span></h2>
+  <div class="sub">moss greens · serif titles · rounded 20px · wood-texture shadow · feels like a cozy book</div>
+  <div class="row">
+    <div class="a5"><span class="status">🔒</span><div class="label">Chapter 2</div><div class="name">In, On, At — Place &amp; Time</div><div class="desc">Core spatial prepositions · 24 exercises<br>0/24 (≥17 needed)</div><div class="check">Locked</div></div>
+    <div class="a5q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="a5o">A. in</div><div class="a5o">B. on</div><div class="a5o">C. at</div><div class="a5o">D. by</div></div>
+    <div class="a5w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+  </div>
+  <div class="legend"><span><i style="background:#6b9b4a"></i> Action</span><span><i style="background:#81c784"></i> Correct</span></div>
+</div>
+
+<!-- STYLE 6 -->
+<div class="style-section">
+  <h2>6. Terminal CRT <span style="font-weight:400;color:#666;font-size:14px">— green phosphor, hacker dark</span></h2>
+  <div class="sub">#0a0f0a black-green · monospace · CRT glow · inset shadow · scanline feel</div>
+  <div class="row">
+    <div class="a6"><span class="status">▸</span><div class="label">$ ./module_02.sh</div><div class="name">PIPE: in/on/at [PLACE+TIME]</div><div class="desc">LOADING 24 QUESTIONS...<br>[0/24] STATUS: LOCKED</div><div class="check">run unlock_prev_module.sh ▸</div></div>
+    <div class="a6q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="a6o">(A) in</div><div class="a6o">(B) on</div><div class="a6o">(C) at</div><div class="a6o">(D) by</div></div>
+    <div class="a6w"><div class="wq">BUG: I'll meet you ___ Monday. → fix="on"</div><span class="wbadge">×2</span></div>
+  </div>
+  <div class="legend"><span><i style="background:#33ff33"></i> Active</span><span><i style="background:#228822"></i> Inactive</span></div>
+</div>
+
+<!-- STYLE 7 -->
+<div class="style-section">
+  <h2>7. Brutalist Paper <span style="font-weight:400;color:#666;font-size:14px">— kraft, tape, imperfect</span></h2>
+  <div class="sub">#f5f0e8 craft bg · 6px black offset shadows · dot texture · Georgia + monospace</div>
+  <div class="row">
+    <div class="a7"><span class="status">🔒</span><div class="label">BLOCK 02</div><div class="name">PREPOSITIONS IN / ON / AT</div><div class="desc">Spatial + temporal core. 24 drills.<br>0 | 24 PASSED — BLOCKED</div><div class="check">LOCKED ▸</div></div>
+    <div class="a7q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="a7o">A. in</div><div class="a7o">B. on</div><div class="a7o">C. at</div><div class="a7o">D. by</div></div>
+    <div class="a7w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+  </div>
+  <div class="legend"><span><i style="background:#ff6b35"></i> Call-to-action</span><span><i style="background:#1a1a1a"></i> Correct</span></div>
+</div>
+
+<!-- STYLE 8 -->
+<div class="style-section">
+  <h2>8. Cyber Y2K <span style="font-weight:400;color:#666;font-size:14px">— baby blue, glossy, nostalgic</span></h2>
+  <div class="sub">silver-blue gradient · frosted glass · 24px pill radius · glossy inset highlights</div>
+  <div class="row">
+    <div class="a8"><span class="status">🔒</span><div class="label">STEP_02</div><div class="name">Prepositions: In, On, At</div><div class="desc">Core spatial + temporal · 24 questions<br>0/24 unlocked (17+ required)</div><div class="check">locked</div></div>
+    <div class="a8q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="a8o">A. in</div><div class="a8o">B. on</div><div class="a8o">C. at</div><div class="a8o">D. by</div></div>
+    <div class="a8w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+  </div>
+  <div class="legend"><span><i style="background:#8ab4f8"></i> Action</span><span><i style="background:#34c759"></i> Correct</span><span><i style="background:#e74c3c"></i> Wrong</span></div>
+</div>
+
+<!-- STYLE 9 -->
+<div class="style-section">
+  <h2>9. Mono Noir <span style="font-weight:400;color:#666;font-size:14px">— editorial, pure B&amp;W, editorial</span></h2>
+  <div class="sub">#fff + #000 only · hairline borders · 300 font weight · generous whitespace · magazines</div>
+  <div class="row">
+    <div class="a9"><span class="status" style="bottom:16px;top:auto">locked</span><div class="label">MODULE · 02</div><div class="name">Prepositions:<br>In, On, At</div><div class="desc">Core spatial &amp; temporal prepositions — 24 questions. 0/24 passed.</div><div class="check">locked</div></div>
+    <div class="a9q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="a9o">A. in</div><div class="a9o">B. on</div><div class="a9o">C. at</div><div class="a9o">D. by</div></div>
+    <div class="a9w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+  </div>
+  <div class="legend"><span><i style="background:#000"></i> Active</span><span><i style="background:#ddd"></i> Default</span></div>
+</div>
+
+</div>
+
+<div class="foot">
+  <textarea id="notes" placeholder="Notes: which style? combine elements? other thoughts?"></textarea>
+  <div class="btn-row">
+    <button class="btn-sub" onclick="submitIt()">Submit brainstorm</button>
+    <button class="btn-copy" onclick="copyIt()">Copy response</button>
+    <button class="btn-down" onclick="downloadIt()">Download .txt</button>
+  </div>
+  <div id="result" style="margin-top:12px;background:#1a1a1a;border-radius:8px;padding:12px;font-size:13px;color:#888;display:none;white-space:pre-wrap"></div>
+</div>
+
+<script>
+function submitIt(){
+  let n=document.getElementById('notes').value;
+  let r=`${n}\n\n=== 5 NEW STYLES ===\n5 Ghibli Forest: warm organic, kids/teens, cozy book feel\n6 Terminal CRT: hacker night learners, green phosphor\n7 Brutalist Paper: craft/designer aesthetic, bold typography\n8 Cyber Y2K: nostalgic retro, frosted glass, silver-blue\n9 Mono Noir: editorial minimal, serious/professional\n\n=== FAVORITES (from v1) ===\n3 Warm Terra: soft brown/cream, bookish\n4 Brutal Neon: gaming terminal, hacker\n`;
+  document.getElementById('result').style.display='block';
+  document.getElementById('result').textContent=r;
+}
+function copyIt(){
+  let t=document.getElementById('result').textContent;
+  navigator.clipboard.writeText(t).then(()=>alert('Copied!'));
+}
+function downloadIt(){
+  let t=document.getElementById('result').textContent||document.getElementById('notes').value;
+  let b=new Blob([t],{type:'text/plain'});
+  let a=document.createElement('a');
+  a.href=URL.createObjectURL(b);a.download='grammar-game-ui-brainstorm-v2.txt';
+  a.click();
+}
+</script>
+</body>
+</html>

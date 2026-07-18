@@ -315,7 +315,7 @@ const palettes={
 const bodyFonts={nunito:"'Nunito',sans-serif",inter:"'Inter',sans-serif",dmsans:"'DM Sans',sans-serif",atkinson:"'Atkinson Hyperlegible',sans-serif",system:"system-ui,-apple-system,sans-serif"};
 
 // Selection handlers
-function sel(gridId,el,key,val){picks[key]=val;document.querySelectorAll('#'+gridId+' .card, #'+gridId+' .kern-opt').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');updateKerning();updatePreview()}
+function sel(gridId,el,key,val){picks[key]=val;document.querySelectorAll(gridId+' .card, '+gridId+' .kern-opt').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');updateKerning();updatePreview()}
 function selectIcon(el,val){sel('#iconGrid',el,'icon',val)}
 function selectFont(el,val){sel('#fontGrid',el,'font',val)}
 function selectKern(el,val){sel('#kernGrid',el,'kern',val)}

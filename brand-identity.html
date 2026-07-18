@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Gramlingo — Brand Identity System</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0d0d0d;color:#e0e0e0;line-height:1.5;padding:20px}
+.head{text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#1a2a22 0%,#0d0d0d 100%)}
+.head h1{font-size:clamp(32px,5vw,60px);font-weight:700;letter-spacing:-.5px;color:#a0dcc0}
+.head p{color:#7a9a8a;margin-top:8px;font-size:15px}
+.section{max-width:1200px;margin:0 auto 40px}
+.section h2{font-size:22px;font-weight:600;color:#a0dcc0;margin-bottom:4px;padding-top:40px;border-top:1px solid #1a2a22}
+.section .sub{font-size:13px;color:#666;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:14px;padding:20px;position:relative;transition:.2s}
+.card:hover{border-color:#3a3a3a}
+.card.pick{border-color:#7ec8a0;border-width:2px;box-shadow:0 0 20px rgba(126,200,160,.1)}
+.card.pick::before{content:'★ TOP PICK';position:absolute;top:-10px;right:12px;background:#7ec8a0;color:#1a2a22;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.5px}
+.card h3{font-size:16px;font-weight:600;margin-bottom:8px;color:#ccc}
+.card .preview{margin:8px 0;padding:12px;background:#111;border-radius:8px;text-align:center;font-size:24px;min-height:50px;display:flex;align-items:center;justify-content:center}
+.card .specs{font-size:11px;color:#666;line-height:1.6}
+.card .specs span{color:#888;font-weight:500}
+
+/* Wordmark preview */
+.wm1{font-family:'Trebuchet MS',sans-serif;font-weight:600}
+.wm2{font-family:Georgia,serif;font-weight:400}
+.wm3{font-family:'Courier New',monospace;font-weight:700;letter-spacing:.1em}
+.wm4{font-family:system-ui,sans-serif;font-weight:700;letter-spacing:-.02em}
+.wm5{font-family:Georgia,serif;font-style:italic;font-weight:400}
+
+/* Palette swatches */
+.swatches{display:flex;gap:6px;margin:8px 0}
+.swatch{width:30px;height:30px;border-radius:6px}
+
+/* Kerning examples */
+.kern-demo{font-size:28px;font-weight:700;text-align:center;margin:8px 0;letter-spacing:0}
+.kern-demo.tight{letter-spacing:-.08em}
+.kern-demo.normal{letter-spacing:.02em}
+.kern-demo.loose{letter-spacing:.12em}
+.kern-demo.mixed{letter-spacing:.05em}
+.kern-demo.wide{letter-spacing:.2em}
+
+/* Font pairings */
+.pair-h{font-size:20px;font-weight:700;margin-bottom:4px}
+.pair-b{font-size:12px;color:#888;line-height:1.5}
+
+/* UI components */
+.ui-btn{display:inline-block;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;margin:3px}
+.ui-card{background:#151515;border-radius:12px;padding:14px;margin:8px 0}
+.ui-input{padding:8px 12px;border-radius:8px;border:1px solid #333;background:#111;color:#ccc;font-size:12px;width:100%;margin:3px 0}
+
+.notes-row{max-width:800px;margin:40px auto;text-align:center}
+.notes-row textarea{width:100%;min-height:80px;background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:12px;color:#ccc;font-size:14px;margin-bottom:10px}
+.notes-row button{padding:10px 20px;border-radius:24px;font-size:14px;font-weight:600;border:none;cursor:pointer;margin:4px}
+.btn-sub{background:#7ec8a0;color:#1a2a22}
+.btn-out{background:transparent;border:1px solid #7ec8a0;color:#7ec8a0}
+footer{text-align:center;padding:40px 20px;color:#444;font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>🧌 Gramlingo — Brand Identity System</h1>
+  <p>Gramlin-Go! · The grammar gremlin. 5 options × 7 categories. ★ marks top pick.</p>
+</div>
+
+<!-- ===== 1. ICON ===== -->
+<div class="section">
+  <h2>1. Icon — 5 Concepts</h2>
+  <div class="sub">The mascot / app icon / favicon. Must work at 16×16px.</div>
+  <div class="grid">
+    <div class="card">
+      <h3>🧌 Round Gramlin Face</h3>
+      <div class="preview">🧌</div>
+      <div class="specs">Round creature, big shiny eyes, tiny horns, slight grin. Feels like Pokémon × Duolingo. Works at all sizes. Universal appeal.</div>
+    </div>
+    <div class="card pick">
+      <h3>📝 Gramlin Holding Pencil</h3>
+      <div class="preview">✏️🧌</div>
+      <div class="specs">Small gremlin clutching an oversized pencil — "writing the rules." Instantly signals grammar + learning. Too detailed at favicon size but great for hero/branding.</div>
+    </div>
+    <div class="card">
+      <h3>◉ G Monogram</h3>
+      <div class="preview" style="font-size:40px;color:#7ec8a0">◉</div>
+      <div class="specs">A circle with a tail forming a "G" — clean, professional. Reads at 16px. The Gramlin face can be a secondary mascot, this is the primary mark.</div>
+    </div>
+    <div class="card">
+      <h3>🦜 Parrot with Quote Bubble</h3>
+      <div class="preview">🦜💬</div>
+      <div class="specs">Parrot = repetition/mimicry (grammar practice). Speech bubble = language. Fun but less unique — many language apps use birds.</div>
+    </div>
+    <div class="card">
+      <h3>⬡ Sentence Hexagon</h3>
+      <div class="preview" style="font-size:30px;color:#7ec8a0">⬡</div>
+      <div class="specs">Hexagonal crystal with a "G" carved into it. Systemic, modular vibes. Good for the game engine identity — each module is a hex tile.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 2. WORDMARK FONT ===== -->
+<div class="section">
+  <h2>2. Wordmark Logo Font — 5 Options</h2>
+  <div class="sub">The font for the "Gramlingo" brand name itself.</div>
+  <div class="grid">
+    <div class="card pick">
+      <h3>Baloo 2 · Bold</h3>
+      <div class="preview wm1" style="font-family:system-ui;font-weight:800;font-size:28px;letter-spacing:-.02em">Gramlingo</div>
+      <div class="specs">Playful, rounded, heavy. Built for display. The "G" has a distinctive swoosh. Feels friendly + confident. Google Fonts, OFL.</div>
+    </div>
+    <div class="card">
+      <h3>Fredoka One</h3>
+      <div class="preview wm1" style="font-family:system-ui;font-weight:700;font-size:26px;letter-spacing:.01em">Gramlingo</div>
+      <div class="specs">Even more rounded, slightly wider. Great for very young audiences. Feels like a toy brand. Less versatile for body copy.</div>
+    </div>
+    <div class="card">
+      <h3>DM Serif Display</h3>
+      <div class="preview wm2" style="font-family:Georgia,serif;font-size:26px">Gramlingo</div>
+      <div class="specs">Elegant serif. Premium feel. Good for Syntaxia/Gramatica direction. Feels less "Gramlin" — more like a textbook publisher.</div>
+    </div>
+    <div class="card">
+      <h3>Poppins · Extrabold</h3>
+      <div class="preview" style="font-family:system-ui;font-weight:800;font-size:24px;letter-spacing:-.01em">Gramlingo</div>
+      <div class="specs">Geometric sans, clean. Most versatile: works for logo AND UI. The most professional of the playful options.</div>
+    </div>
+    <div class="card">
+      <h3>Caveat · Brush</h3>
+      <div class="preview wm5">Gramlingo</div>
+      <div class="specs">Handwritten, organic, personal. Great for a "signature" sub-mark. Not legible enough for primary logo. Use as accent only.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 3. WORDMARK KERNING ===== -->
+<div class="section">
+  <h2>3. Wordmark Letter Kerning — 5 Treatments</h2>
+  <div class="sub">Spacing between individual letter pairs.</div>
+  <div class="grid">
+    <div class="card pick">
+      <h3>Gram·lingo — split kerning</h3>
+      <div class="preview kern-demo mixed">Gram·lingo</div>
+      <div class="specs">Tighter on "Gram" (-0.04em), looser on "lingo" (0.06em). A subtle dot or dot between them. Emphasizes the wordplay: Gram + lingo.</div>
+    </div>
+    <div class="card">
+      <h3>GR A M L I N G O — wide</h3>
+      <div class="preview kern-demo wide">GRAMLINGO</div>
+      <div class="specs">Spaced-out caps. Luxury/premium vibe. Good for hero lockups. Loses the "cute" factor — feels like an industrial brand.</div>
+    </div>
+    <div class="card">
+      <h3>gramlingo — tight lowercase</h3>
+      <div class="preview kern-demo tight">gramlingo</div>
+      <div class="specs">All lowercase, tight spacing. Modern SaaS vibe. Feels approachable. Good for the app icon overlay. Not distinctive enough alone.</div>
+    </div>
+    <div class="card">
+      <h3>Graml·ingo — mid-word dot</h3>
+      <div class="preview" style="font-size:28px;font-weight:700;text-align:center;letter-spacing:.03em;margin:8px 0">Graml·ingo</div>
+      <div class="specs">A center dot at the syllable break. Clean, European typography feel. Good for the wordmark but may confuse non-designers.</div>
+    </div>
+    <div class="card">
+      <h3>G r a m l i n g o — tracking only</h3>
+      <div class="preview" style="font-size:26px;font-weight:700;text-align:center;letter-spacing:.15em;margin:8px 0">Gramlingo</div>
+      <div class="specs">Even tracking at 0.15em. Simple, no tricks. Most accessible. Doesn't emphasize the wordplay but reads cleanest in small sizes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 4. LETTER SPACING ===== -->
+<div class="section">
+  <h2>4. Logo Letter Spacing — 5 Values</h2>
+  <div class="sub">Overall tracking for the complete logo mark.</div>
+  <div class="grid">
+    <div class="card pick">
+      <h3>+0.04em — snug default</h3>
+      <div class="preview" style="font-size:28px;font-weight:800;letter-spacing:.04em">Gramlingo</div>
+      <div class="specs">Best balance. Letters breathe but stay connected. Works at ALL sizes — favicon to hero. Zero distortion.</div>
+    </div>
+    <div class="card">
+      <h3>−0.02em — tight display</h3>
+      <div class="preview" style="font-size:28px;font-weight:800;letter-spacing:-.02em">Gramlingo</div>
+      <div class="specs">Great for large hero sizes. Letters touch slightly — feels premium. Breaks down below 24px.</div>
+    </div>
+    <div class="card">
+      <h3>+0.10em — airy</h3>
+      <div class="preview" style="font-size:26px;font-weight:700;letter-spacing:.10em">Gramlingo</div>
+      <div class="specs">Breathable, modern. Good for the nav bar logo. Too loose for the primary mark — loses cohesion.</div>
+    </div>
+    <div class="card">
+      <h3>0 — default font spacing</h3>
+      <div class="preview" style="font-size:28px;font-weight:800;letter-spacing:0">Gramlingo</div>
+      <div class="specs">Whatever the font ships with. Requires no adjustment. Slightly inconsistent between letters with a playful font like Baloo 2.</div>
+    </div>
+    <div class="card">
+      <h3>+0.02em caps, −0.03em lowercase</h3>
+      <div class="preview" style="font-size:24px;font-weight:700;margin:8px 0"><span style="letter-spacing:.02em">GRAM</span><span style="letter-spacing:-.03em">lingo</span></div>
+      <div class="specs">Dual tracking: "GRAM" spaced out, "lingo" tucked in. Emphasizes the name structure. Experimental — love it or hate it.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 5. COLOR PALETTE ===== -->
+<div class="section">
+  <h2>5. Color Palette — 5 Palettes</h2>
+  <div class="sub">5-color systems: primary, bg, accent, correct, wrong.</div>
+  <div class="grid">
+    <div class="card pick">
+      <h3>Mint Forest · Gramlin default</h3>
+      <div class="swatches"><div class="swatch" style="background:#7ec8a0"></div><div class="swatch" style="background:#2d4a3e"></div><div class="swatch" style="background:#f0faf5"></div><div class="swatch" style="background:#e8828a"></div><div class="swatch" style="background:#5cb878"></div></div>
+      <div class="specs">#7ec8a0 · #2d4a3e · #f0faf5 · #e8828a · #5cb878<br>Current deployed palette. Fresh, friendly, natural. High contrast ratio. Soft coral red keeps errors gentle.</div>
+    </div>
+    <div class="card">
+      <h3>Sunset Gramlin</h3>
+      <div class="swatches"><div class="swatch" style="background:#ff8c42"></div><div class="swatch" style="background:#2d1b10"></div><div class="swatch" style="background:#fff5ee"></div><div class="swatch" style="background:#e07070"></div><div class="swatch" style="background:#4caf50"></div></div>
+      <div class="specs">#ff8c42 · #2d1b10 · #fff5ee · #e07070 · #4caf50<br>Warm, energetic. Feels like golden hour. Orange action color is rare in edtech — stands out.</div>
+    </div>
+    <div class="card">
+      <h3>Lavender Haze</h3>
+      <div class="swatches"><div class="swatch" style="background:#b39ddb"></div><div class="swatch" style="background:#1a1530"></div><div class="swatch" style="background:#f5f0ff"></div><div class="swatch" style="background:#e57388"></div><div class="swatch" style="background:#66bb6a"></div></div>
+      <div class="specs">#b39ddb · #1a1530 · #f5f0ff · #e57388 · #66bb6a<br>Dreamy, creative. Good for a "fantasy" Gramlin variant. Less contrast on the action color.</div>
+    </div>
+    <div class="card">
+      <h3>Cyber Gramlin</h3>
+      <div class="swatches"><div class="swatch" style="background:#00ff88"></div><div class="swatch" style="background:#0d1117"></div><div class="swatch" style="background:#161b22"></div><div class="swatch" style="background:#ff4757"></div><div class="swatch" style="background:#00cc66"></div></div>
+      <div class="specs">#00ff88 · #0d1117 · #161b22 · #ff4757 · #00cc66<br>Dark mode native. Hacker/gamer audience. Neon green accent is iconic for "rules" & "correct." Terminal vibe.</div>
+    </div>
+    <div class="card">
+      <h3>Paper + Ink</h3>
+      <div class="swatches"><div class="swatch" style="background:#1a1a1a"></div><div class="swatch" style="background:#faf3e0"></div><div class="swatch" style="background:#fdf8ef"></div><div class="swatch" style="background:#c44"></div><div class="swatch" style="background:#2d7d3a"></div></div>
+      <div class="specs">#1a1a1a · #faf3e0 · #fdf8ef · #c44 · #2d7d3a<br>Printed page aesthetic. Mono Noir + Parchment hybrid. Premium textbook feel. Most legible.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 6. TYPOGRAPHY ===== -->
+<div class="section">
+  <h2>6. Brand Typography Combo — 5 Pairs</h2>
+  <div class="sub">Heading font + body font. Must work on Web (Google Fonts) and iOS/Android.</div>
+  <div class="grid">
+    <div class="card pick">
+      <h3>Baloo 2 + Nunito</h3>
+      <div class="pair-h" style="font-family:system-ui;font-weight:800">Relative Clause Master</div>
+      <div class="pair-b" style="font-family:system-ui;font-weight:400">This is body copy. The quick brown fox. 适合中国英语学习者。Clear, rounded, friendly — reads well in both EN and ZH.</div>
+      <div class="specs">Both rounded, both Google Fonts. Baloo 2 handles display; Nunito handles long-form. CONSISTENT personality across sizes.</div>
+    </div>
+    <div class="card">
+      <h3>Fredoka One + Inter</h3>
+      <div class="pair-h" style="font-family:system-ui;font-weight:700">Relative Clause Master</div>
+      <div class="pair-b" style="font-family:system-ui;font-weight:400">This is body copy. The quick brown fox. Inter is the industry standard for body — neutral, lets Fredoka shine.</div>
+      <div class="specs">Playful heading + utilitarian body. Good contrast. Inter has excellent ZH support. Most professional of the playful combos.</div>
+    </div>
+    <div class="card">
+      <h3>Playfair Display + Lora</h3>
+      <div class="pair-h" style="font-family:Georgia,serif;font-weight:700">Relative Clause Master</div>
+      <div class="pair-b" style="font-family:Georgia,serif;font-weight:400">This is body copy. Elegant, editorial. The Gramatica / Syntaxia direction. Too serious for the Gramlin brand.</div>
+      <div class="specs">Serif + serif. Premium editorial. Wrong vibe for "adorable grammar gremlin." Excellent for a textbook/IELTS spinoff.</div>
+    </div>
+    <div class="card">
+      <h3>Poppins + DM Sans</h3>
+      <div class="pair-h" style="font-family:system-ui;font-weight:700">Relative Clause Master</div>
+      <div class="pair-b" style="font-family:system-ui;font-weight:400">This is body copy. Geometric + geometric. Clean, modern, slightly corporate. Good for admin/dashboard screens.</div>
+      <div class="specs">Geometric pair. Most "SaaS" feel. Good for the dashboard/instructor view. Poppins is also a great logo font alternate.</div>
+    </div>
+    <div class="card">
+      <h3>Comic Neue + Atkinson Hyperlegible</h3>
+      <div class="pair-h" style="font-family:system-ui;font-weight:700">Relative Clause Master</div>
+      <div class="pair-b" style="font-family:system-ui;font-weight:400">This is body copy. Maximum accessibility. Comic Neue keeps the playful Gramlin spirit. Atkinson is designed for readability.</div>
+      <div class="specs">Accessibility-first. Comic Neue = playful handwriting without Comic Sans shame. Atkinson = Braille Institute's legibility font.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 7. UX/UI COMPONENTS ===== -->
+<div class="section">
+  <h2>7. UX/UI Components & Variables</h2>
+  <div class="sub">Concrete CSS custom properties and component styles. All deployed live.</div>
+  <div class="grid">
+    <div class="card pick">
+      <h3>Gramlin · Current Deployed</h3>
+      <div style="margin:8px 0">
+        <div style="background:#7ec8a0;color:#1a2a22;padding:8px 18px;border-radius:18px;font-size:13px;font-weight:700;display:inline-block;margin:3px">Primary CTA</div>
+        <div style="background:transparent;border:2px solid #7ec8a0;color:#7ec8a0;padding:8px 18px;border-radius:18px;font-size:13px;font-weight:700;display:inline-block;margin:3px">Outline</div>
+        <div style="background:#5cb878;color:#fff;padding:8px 18px;border-radius:18px;font-size:13px;font-weight:700;display:inline-block;margin:3px">Correct</div>
+        <div style="background:#e8828a;color:#fff;padding:8px 18px;border-radius:18px;font-size:13px;font-weight:700;display:inline-block;margin:3px">Wrong</div>
+      </div>
+      <div class="specs">Pill buttons (18px radius). System fonts. 44px min touch target. Mint green accent, soft coral errors. Accessible contrast.</div>
+    </div>
+    <div class="card">
+      <h3>Mono Noir Components</h3>
+      <div style="margin:8px 0">
+        <div style="background:#000;color:#fff;padding:8px 18px;font-size:12px;font-weight:500;display:inline-block;margin:3px">PRIMARY</div>
+        <div style="background:transparent;border:1px solid #000;color:#000;padding:8px 18px;font-size:12px;font-weight:400;display:inline-block;margin:3px">OUTLINE</div>
+        <div style="background:#000;color:#fff;padding:8px 18px;font-size:12px;display:inline-block;margin:3px;border-top:3px solid #000">WRONG</div>
+      </div>
+      <div class="specs">0 radius. Hairline borders. 300 weight body. Top-border wrong badges. Editorial magazine feel.</div>
+    </div>
+    <div class="card">
+      <h3>Brutalist Components</h3>
+      <div style="margin:8px 0">
+        <div style="background:#ff6b35;color:#fff;padding:8px 16px;font-size:13px;font-weight:900;display:inline-block;margin:3px;box-shadow:4px 4px 0 #1a1a1a">LOCKED ▸</div>
+        <div style="background:#fff;border:2px solid #2d2d2d;color:#1a1a1a;padding:8px 16px;font-size:13px;font-weight:600;display:inline-block;margin:3px">Option A</div>
+      </div>
+      <div class="specs">Offset shadows. Heavy borders. Caps labels. Maximum personality — may fatigue. Great for the "boss battle" mode.</div>
+    </div>
+    <div class="card">
+      <h3>CSS Variable Map</h3>
+      <div style="font-family:monospace;font-size:10px;color:#7a9a8a;line-height:2;margin:8px 0">
+        --blue:#7ec8a0<br>
+        --green:#5cb878<br>
+        --red:#e8828a<br>
+        --bg:#f0faf5<br>
+        --black:#2d4a3e<br>
+        --near:#2d4a3e<br>
+        --dim:#7a9a8a<br>
+        --radius:18px<br>
+        --fp:system-ui<br>
+        --fm:monospace
+      </div>
+      <div class="specs">All 20+ CSS variables per theme. Switched via data-style attribute. 11 themes deployed. add 12th by copying block + new values.</div>
+    </div>
+  </div>
+</div>
+
+<div class="notes-row">
+  <textarea id="notes" placeholder="My picks: icon ___ · font ___ · kerning ___ · spacing ___ · palette ___ · type ___ · components ___"></textarea>
+  <button class="btn-sub" onclick="copyIt()">Copy picks</button>
+</div>
+
+<footer>Gramlingo · Gramlin-Go! · Deployed live at lareesawho.github.io/relative-clause-quest/</footer>
+
+<script>function copyIt(){navigator.clipboard.writeText(document.getElementById('notes').value||'Gramlingo picks TBD').then(()=>{alert('Copied!')})}</script>
+</body>
+</html>

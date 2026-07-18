@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Grammar Game — 20 UI Style Options</title>
+<style>
+:root{--s:system-ui,-apple-system,sans-serif;--m:ui-monospace,Consolas,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--s);background:#0d0d0d;color:#e0e0e0;line-height:1.5}
+.head{text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#1a1a2e 0%,#0d0d0d 100%)}
+.head h1{font-size:clamp(28px,4vw,52px);font-weight:700;letter-spacing:-.5px}
+.head p{color:#888;margin-top:8px;font-size:15px}
+.grid{display:grid;grid-template-columns:1fr;max-width:1100px;margin:0 auto;padding:0 20px 60px;gap:48px}
+.style-section h2{font-size:20px;font-weight:600;margin-bottom:2px}
+.style-section .sub{font-size:12px;color:#666;margin-bottom:16px}
+.row{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+
+/* ====== STYLE 1: Apple Education (current) ====== */
+.s1{background:#ffffff;color:#1d1d1f;border-radius:14px;padding:20px;min-height:130px;position:relative;box-shadow:0 2px 20px rgba(0,0,0,.04)}
+.s1 .label{font-size:11px;font-weight:600;color:rgba(0,0,0,.4);font-family:var(--m);margin-bottom:6px}
+.s1 .name{font-size:16px;font-weight:600;line-height:1.3;margin-bottom:3px}
+.s1 .desc{font-size:11px;color:rgba(0,0,0,.4);line-height:1.3}
+.s1 .check{display:inline-block;margin-top:8px;font-size:12px;color:#0071e3;font-weight:600}
+.s1 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s1q{background:#fff;border-radius:14px;padding:22px 20px;box-shadow:0 4px 30px rgba(0,0,0,.06)}
+.s1q .qprompt{font-size:15px;font-weight:500;margin-bottom:12px;line-height:1.5}
+.s1q .qprompt em{font-style:normal;text-decoration:underline;text-underline-offset:3px}
+.s1o{display:block;width:100%;padding:9px 12px;border:2px solid #e5e5e7;border-radius:8px;background:transparent;font-size:12px;text-align:left;margin-bottom:4px;transition:.15s;color:#1d1d1f}
+.s1o:first-of-type{border-color:#0071e3;background:rgba(0,113,227,.04)}
+.s1o:last-of-type{background:#34c759;color:#fff;border-color:#34c759}
+.s1o:last-of-type::after{content:' ✓';font-weight:700}
+.s1w{background:#fff;border-radius:10px;padding:12px 16px;box-shadow:0 1px 8px rgba(0,0,0,.04);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s1w .wq{font-size:12px;font-weight:500;flex:1;color:#1d1d1f}
+.s1w .wbadge{background:rgba(255,59,48,.12);color:#ff3b30;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 2: Warm Terra ====== */
+.s2{background:linear-gradient(135deg,#fefaf6 0%,#faf5ee 100%);color:#3d2e1e;border:1px solid #e8d5c0;border-radius:16px;padding:20px;min-height:130px;position:relative;box-shadow:0 2px 12px rgba(120,80,40,.06)}
+.s2 .label{font-size:11px;font-weight:700;color:#c49a6c;font-family:var(--m);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.s2 .name{font-size:17px;font-weight:650;line-height:1.3;margin-bottom:3px;color:#2d1f10}
+.s2 .desc{font-size:11px;color:#8a7560;line-height:1.3}
+.s2 .check{display:inline-block;margin-top:8px;font-size:12px;color:#c49a6c;font-weight:600}
+.s2 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s2q{background:linear-gradient(135deg,#fefaf6,#faf5ee);border:1px solid #e8d5c0;border-radius:16px;padding:22px 20px;box-shadow:0 4px 20px rgba(120,80,40,.04)}
+.s2q .qprompt{font-size:15px;font-weight:500;color:#3d2e1e;margin-bottom:12px;line-height:1.5}
+.s2q .qprompt em{font-style:normal;border-bottom:2px solid #c49a6c}
+.s2o{display:block;width:100%;padding:9px 12px;border:1.5px solid #e8d5c0;border-radius:10px;background:#fff;font-size:12px;text-align:left;color:#5d4e3a;margin-bottom:4px}
+.s2o:first-of-type{border-color:#c49a6c;background:rgba(196,154,108,.06)}
+.s2o:last-of-type{background:#e8f5e9;color:#2e7d32;border-color:#a5d6a7}
+.s2o:last-of-type::after{content:' ✓';font-weight:700}
+.s2w{background:#fff;border:1px solid #e8d5c0;border-radius:12px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s2w .wq{font-size:12px;font-weight:500;color:#5d4e3a;flex:1}
+.s2w .wbadge{background:rgba(229,115,115,.12);color:#d32f2f;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 3: Brutal Neon ====== */
+.s3{background:#111111;color:#f5f5f5;border:2px solid #333;border-radius:0;padding:20px;min-height:130px;position:relative;box-shadow:8px 8px 0 #00ff88}
+.s3 .label{font-size:10px;font-weight:700;color:#00ff88;font-family:var(--m);margin-bottom:6px;text-transform:uppercase;letter-spacing:2px}
+.s3 .name{font-size:17px;font-weight:700;line-height:1.2;margin-bottom:3px;color:#fff}
+.s3 .desc{font-size:10px;color:#777;line-height:1.3;font-family:var(--m)}
+.s3 .check{display:inline-block;margin-top:8px;font-size:12px;color:#00ff88;font-weight:700}
+.s3 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s3q{background:#111;border:2px solid #333;padding:22px 20px;box-shadow:8px 8px 0 #ff3366}
+.s3q .qprompt{font-size:15px;font-weight:500;color:#f5f5f5;margin-bottom:12px;line-height:1.5}
+.s3q .qprompt em{font-style:normal;background:#ff336622;padding:0 3px}
+.s3o{display:block;width:100%;padding:9px 12px;border:2px solid #333;background:#1a1a1a;font-size:12px;text-align:left;color:#ccc;margin-bottom:4px}
+.s3o:first-of-type{border-color:#00ff88;background:#0d1a14}
+.s3o:last-of-type{background:#1a2a1a;color:#00ff88;border-color:#00ff88}
+.s3o:last-of-type::after{content:' ✓';font-weight:700}
+.s3w{background:#1a1a1a;border:2px solid #333;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s3w .wq{font-size:12px;font-weight:500;color:#ccc;flex:1}
+.s3w .wbadge{background:rgba(0,255,136,.08);color:#00ff88;border:1px solid #00ff8844;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 4: Eden Glass ====== */
+.s4{background:linear-gradient(135deg,#0A0612,#130A20);color:#F7F2FA;border:1px solid #39204A;border-radius:14px;padding:20px;min-height:130px;position:relative;backdrop-filter:blur(12px)}
+.s4 .label{font-size:10px;font-weight:600;color:#9B5DE5;font-family:var(--m);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.s4 .name{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:3px;background:linear-gradient(135deg,#F72585,#9B5DE5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.s4 .desc{font-size:11px;color:#A99CB8;line-height:1.3}
+.s4 .check{display:inline-block;margin-top:8px;font-size:12px;color:#9B5DE5;font-weight:600}
+.s4 .status{position:absolute;top:12px;right:14px;font-size:14px;color:#9B5DE5}
+.s4q{background:linear-gradient(135deg,#0A0612,#130A20);border:1px solid #39204A;border-radius:14px;padding:22px 20px}
+.s4q .qprompt{font-size:15px;font-weight:500;color:#F7F2FA;margin-bottom:12px;line-height:1.5}
+.s4q .qprompt em{font-style:normal;color:#F72585}
+.s4o{display:block;width:100%;padding:9px 12px;border:1px solid rgba(247,242,250,.08);border-radius:8px;background:rgba(247,242,250,.03);font-size:12px;text-align:left;color:#A99CB8;margin-bottom:4px}
+.s4o:first-of-type{border-color:#9B5DE5;background:rgba(155,93,229,.08)}
+.s4o:last-of-type{background:rgba(52,199,89,.12);color:#34c759;border-color:rgba(52,199,89,.3)}
+.s4o:last-of-type::after{content:' ✓';font-weight:700}
+.s4w{background:rgba(10,6,18,.8);border:1px solid #39204A;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s4w .wq{font-size:12px;font-weight:500;color:#A99CB8;flex:1}
+.s4w .wbadge{background:rgba(247,37,133,.15);color:#F72585;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 5: Ghibli Forest ====== */
+.s5{background:linear-gradient(180deg,#e8f0e3,#d4e6cd);color:#2d4a22;border:2px solid #b8d4a8;border-radius:20px;padding:20px;box-shadow:0 4px 16px rgba(60,100,40,.1);min-height:130px;position:relative}
+.s5 .label{font-size:11px;font-weight:700;color:#6b9b4a;font-family:Georgia,serif;text-transform:uppercase;margin-bottom:6px}
+.s5 .name{font-size:18px;font-weight:700;line-height:1.3;margin-bottom:3px;color:#1e3a0e;font-family:Georgia,serif}
+.s5 .desc{font-size:11px;color:#5a7a4a;line-height:1.3}
+.s5 .check{display:inline-block;margin-top:8px;font-size:12px;color:#6b9b4a;font-weight:700}
+.s5 .status{position:absolute;top:12px;right:14px;font-size:16px}
+.s5q{background:linear-gradient(180deg,#f5faf2,#e8f0e3);border:2px solid #b8d4a8;border-radius:20px;padding:22px 20px}
+.s5q .qprompt{font-size:15px;font-weight:500;color:#2d4a22;margin-bottom:12px}
+.s5q .qprompt em{font-style:normal;background:#fef3c7;padding:0 3px;border-radius:3px}
+.s5o{display:block;width:100%;padding:9px 12px;border:2px solid #c8e0b8;border-radius:14px;background:#fff;font-size:12px;text-align:left;color:#3d5e2e;margin-bottom:4px;font-family:Georgia,serif}
+.s5o:first-of-type{border-color:#6b9b4a;background:#f0f7ea}
+.s5o:last-of-type{background:#dcf5dc;color:#2e7d32;border-color:#81c784}
+.s5o:last-of-type::after{content:' ✓';font-weight:700}
+.s5w{background:#fff;border:2px solid #b8d4a8;border-radius:16px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s5w .wq{font-size:12px;font-weight:500;color:#3d5e2e;flex:1}
+.s5w .wbadge{background:rgba(211,47,47,.1);color:#c62828;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 6: Terminal CRT ====== */
+.s6{background:#0a0f0a;color:#33ff33;border:3px solid #1a3a1a;border-radius:8px;padding:20px;min-height:130px;position:relative;box-shadow:0 0 20px rgba(51,255,51,.1),inset 0 0 60px rgba(0,0,0,.5)}
+.s6 .label{font-size:10px;font-weight:700;color:#33ff33;font-family:'Courier New',Courier,monospace;margin-bottom:6px}
+.s6 .name{font-size:15px;font-weight:700;line-height:1.2;margin-bottom:3px;color:#00ff00;font-family:'Courier New',Courier,monospace}
+.s6 .desc{font-size:10px;color:#228822;line-height:1.3;font-family:'Courier New',Courier,monospace}
+.s6 .check{display:inline-block;margin-top:8px;font-size:11px;color:#33ff33;font-weight:700;font-family:'Courier New',Courier,monospace}
+.s6 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s6q{background:#050a05;border:3px solid #1a3a1a;border-radius:8px;padding:22px 20px;box-shadow:0 0 30px rgba(51,255,51,.05),inset 0 0 80px rgba(0,0,0,.6)}
+.s6q .qprompt{font-size:14px;font-weight:500;color:#33ff33;margin-bottom:12px;font-family:'Courier New',Courier,monospace}
+.s6q .qprompt em{font-style:normal;background:#33ff3311;padding:0 2px}
+.s6o{display:block;width:100%;padding:7px 10px;border:2px solid #1a3a1a;background:#080e08;font-size:11px;text-align:left;color:#228822;margin-bottom:4px;font-family:'Courier New',Courier,monospace}
+.s6o:first-of-type{border-color:#33ff33;background:#0a1a0a;color:#33ff33}
+.s6o:last-of-type{background:#0a1a0a;color:#33ff33;border-color:#33ff33}
+.s6o:last-of-type::after{content:' ✓';font-weight:700}
+.s6w{background:#080e08;border:2px solid #1a3a1a;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s6w .wq{font-size:11px;font-weight:500;color:#228822;flex:1;font-family:'Courier New',Courier,monospace}
+.s6w .wbadge{background:#1a3a1a;color:#33ff33;border:1px solid #33ff3322;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 7: Brutalist Paper ====== */
+.s7{background:#f5f0e8;color:#3d3028;border:3px solid #2d2d2d;border-radius:4px;padding:20px;min-height:130px;position:relative;box-shadow:6px 6px 0 #1a1a1a}
+.s7 .label{font-size:9px;font-weight:900;color:#ff6b35;font-family:'Courier New',Courier,monospace;margin-bottom:6px;text-transform:uppercase;letter-spacing:3px}
+.s7 .name{font-size:19px;font-weight:900;line-height:1.1;margin-bottom:3px;color:#1a1a1a;font-family:Georgia,serif}
+.s7 .desc{font-size:10px;color:#555;line-height:1.3;font-family:var(--m)}
+.s7 .check{display:inline-block;margin-top:8px;font-size:12px;color:#ff6b35;font-weight:900}
+.s7 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s7q{background:#faf8f3;border:3px solid #2d2d2d;border-radius:4px;padding:22px 20px;box-shadow:8px 8px 0 #1a1a1a}
+.s7q .qprompt{font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:12px;font-family:Georgia,serif}
+.s7q .qprompt em{font-style:normal;background:#ff6b3522;padding:0 3px}
+.s7o{display:block;width:100%;padding:9px 12px;border:2px solid #2d2d2d;background:#fff;font-size:12px;text-align:left;color:#3d3028;margin-bottom:4px;font-weight:600;border-radius:2px}
+.s7o:first-of-type{border-color:#ff6b35;border-width:3px}
+.s7o:last-of-type{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.s7o:last-of-type::after{content:' ✓';font-weight:900}
+.s7w{background:#fff;border:2px solid #2d2d2d;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:2px}
+.s7w .wq{font-size:12px;font-weight:600;color:#1a1a1a;flex:1}
+.s7w .wbadge{background:#1a1a1a;color:#fff;padding:2px 8px;font-size:10px;font-weight:900}
+
+/* ====== STYLE 8: Cyber Y2K ====== */
+.s8{background:linear-gradient(135deg,#e8f0fe 0%,#dce4f8 50%,#f0e6ff 100%);color:#1e3a5f;border:3px solid #c0d0f0;border-radius:24px;padding:20px;min-height:130px;position:relative;box-shadow:0 8px 32px rgba(100,140,220,.15),inset 0 2px 0 rgba(255,255,255,.8)}
+.s8 .label{font-size:9px;font-weight:900;color:#7b93c0;font-family:var(--m);margin-bottom:6px;text-transform:uppercase;letter-spacing:2px}
+.s8 .name{font-size:16px;font-weight:700;line-height:1.3;margin-bottom:3px;color:#1e3a5f;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+.s8 .desc{font-size:11px;color:#5a7aaa;line-height:1.3}
+.s8 .check{display:inline-block;margin-top:8px;font-size:12px;color:#4a90d9;font-weight:700}
+.s8 .status{position:absolute;top:12px;right:14px;font-size:16px}
+.s8q{background:linear-gradient(180deg,#fff 0%,#f0f4ff 100%);border:3px solid #c0d0f0;border-radius:24px;padding:22px 20px;box-shadow:0 8px 32px rgba(100,140,220,.1),inset 0 2px 0 rgba(255,255,255,.9)}
+.s8q .qprompt{font-size:15px;font-weight:500;color:#1e3a5f;margin-bottom:12px}
+.s8q .qprompt em{font-style:normal;color:#c070d0;font-weight:600}
+.s8o{display:block;width:100%;padding:9px 12px;border:2px solid #d8e0f8;border-radius:20px;background:rgba(255,255,255,.7);font-size:12px;text-align:left;color:#3d5a80;margin-bottom:4px}
+.s8o:first-of-type{border-color:#8ab4f8;background:rgba(138,180,248,.08)}
+.s8o:last-of-type{background:rgba(52,199,89,.1);color:#2e7d32;border-color:rgba(52,199,89,.3)}
+.s8o:last-of-type::after{content:' ✓';font-weight:700}
+.s8w{background:rgba(255,255,255,.8);border:2px solid #d8e0f8;border-radius:20px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s8w .wq{font-size:12px;font-weight:500;color:#3d5a80;flex:1}
+.s8w .wbadge{background:rgba(255,107,107,.12);color:#e74c3c;border-radius:12px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 9: Mono Noir ====== */
+.s9{background:#ffffff;color:#000000;border:1px solid #000;padding:20px;min-height:130px;position:relative}
+.s9 .label{font-size:9px;font-weight:400;color:#888;margin-bottom:14px;letter-spacing:3px;text-transform:uppercase}
+.s9 .name{font-size:20px;font-weight:300;line-height:1.05;margin-bottom:3px;color:#000;letter-spacing:-.5px}
+.s9 .desc{font-size:11px;color:#666;line-height:1.3;font-weight:300}
+.s9 .check{display:block;margin-top:12px;font-size:11px;color:#000;font-weight:400;border-bottom:1px solid #000;padding-bottom:2px}
+.s9 .status{position:absolute;bottom:14px;right:16px;font-size:12px;font-weight:300}
+.s9q{background:#fff;border:1px solid #000;padding:22px 20px}
+.s9q .qprompt{font-size:16px;font-weight:300;color:#000;margin-bottom:16px;letter-spacing:-.3px}
+.s9q .qprompt em{font-style:normal;border-bottom:1px solid #000;padding-bottom:1px}
+.s9o{display:block;width:100%;padding:10px 14px;border:1px solid #ddd;background:#fff;font-size:12px;text-align:left;color:#000;margin-bottom:3px;font-weight:300}
+.s9o:first-of-type{border-color:#000;border-width:2px}
+.s9o:last-of-type{background:#000;color:#fff;border-color:#000}
+.s9o:last-of-type::after{content:' ✓'}
+.s9w{background:#fff;border:1px solid #000;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:3px solid #000}
+.s9w .wq{font-size:12px;font-weight:300;color:#000;flex:1}
+.s9w .wbadge{background:#000;color:#fff;padding:2px 8px;font-size:10px;font-weight:400}
+
+/* ====== STYLE 10: Sakura Light ====== */
+.s10{background:linear-gradient(180deg,#fff5f7 0%,#ffe8ec 100%);color:#4a1a2a;border:2px solid #f4c2d0;border-radius:18px;padding:20px;min-height:130px;position:relative;box-shadow:0 3px 16px rgba(200,100,130,.08)}
+.s10 .label{font-size:11px;font-weight:600;color:#d4849a;font-family:Georgia,serif;margin-bottom:6px}
+.s10 .name{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:3px;color:#2d0a15}
+.s10 .desc{font-size:11px;color:#8a5a6a;line-height:1.3}
+.s10 .check{display:inline-block;margin-top:8px;font-size:12px;color:#d4849a;font-weight:600}
+.s10 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s10q{background:linear-gradient(180deg,#fff5f7,#ffe8ec);border:2px solid #f4c2d0;border-radius:18px;padding:22px 20px}
+.s10q .qprompt{font-size:15px;font-weight:500;color:#4a1a2a;margin-bottom:12px}
+.s10q .qprompt em{font-style:normal;background:#ffe0e6;padding:0 3px;border-radius:4px}
+.s10o{display:block;width:100%;padding:9px 12px;border:2px solid #f4c2d0;border-radius:12px;background:#fff;font-size:12px;text-align:left;color:#5a2a3a;margin-bottom:4px}
+.s10o:first-of-type{border-color:#d4849a;background:rgba(212,132,154,.06)}
+.s10o:last-of-type{background:#e8f5e9;color:#2e7d32;border-color:#a5d6a7}
+.s10o:last-of-type::after{content:' ✓';font-weight:700}
+.s10w{background:#fff;border:2px solid #f4c2d0;border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s10w .wq{font-size:12px;font-weight:500;color:#5a2a3a;flex:1}
+.s10w .wbadge{background:rgba(200,60,80,.1);color:#c43a50;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 11: Midnight Ink ====== */
+.s11{background:#050510;color:#c8d0ff;border:2px solid #1a2040;border-radius:12px;padding:20px;min-height:130px;position:relative}
+.s11 .label{font-size:10px;font-weight:600;color:#6080d0;font-family:var(--m);margin-bottom:6px;text-transform:uppercase}
+.s11 .name{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:3px;color:#d0d8ff}
+.s11 .desc{font-size:11px;color:#4060a0;line-height:1.3}
+.s11 .check{display:inline-block;margin-top:8px;font-size:12px;color:#6080d0;font-weight:600}
+.s11 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s11q{background:#080820;border:2px solid #1a2040;border-radius:12px;padding:22px 20px}
+.s11q .qprompt{font-size:15px;font-weight:500;color:#c8d0ff;margin-bottom:12px}
+.s11q .qprompt em{font-style:normal;color:#80a0ff;font-weight:600}
+.s11o{display:block;width:100%;padding:9px 12px;border:2px solid #1a2040;border-radius:8px;background:#0a0a28;font-size:12px;text-align:left;color:#6080d0;margin-bottom:4px}
+.s11o:first-of-type{border-color:#6080d0;background:rgba(96,128,208,.08)}
+.s11o:last-of-type{background:rgba(52,199,89,.1);color:#34c759;border-color:rgba(52,199,89,.2)}
+.s11o:last-of-type::after{content:' ✓';font-weight:700}
+.s11w{background:#0a0a28;border:2px solid #1a2040;border-radius:8px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s11w .wq{font-size:12px;font-weight:500;color:#6080d0;flex:1}
+.s11w .wbadge{background:rgba(128,160,255,.1);color:#80a0ff;border:1px solid #6080d044;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 12: Solar Flare ====== */
+.s12{background:linear-gradient(135deg,#fff8e1 0%,#fff3c4 100%);color:#5d3a00;border:2px solid #ffd54f;border-radius:16px;padding:20px;min-height:130px;position:relative;box-shadow:0 3px 16px rgba(255,180,0,.1)}
+.s12 .label{font-size:11px;font-weight:700;color:#e6a800;font-family:var(--m);margin-bottom:6px;text-transform:uppercase}
+.s12 .name{font-size:17px;font-weight:700;line-height:1.3;margin-bottom:3px;color:#3d2200}
+.s12 .desc{font-size:11px;color:#8a6a30;line-height:1.3}
+.s12 .check{display:inline-block;margin-top:8px;font-size:12px;color:#e6a800;font-weight:600}
+.s12 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s12q{background:#fffef5;border:2px solid #ffd54f;border-radius:16px;padding:22px 20px}
+.s12q .qprompt{font-size:15px;font-weight:500;color:#5d3a00;margin-bottom:12px}
+.s12q .qprompt em{font-style:normal;background:#fff3c4}
+.s12o{display:block;width:100%;padding:9px 12px;border:2px solid #ffe082;border-radius:10px;background:#fff;font-size:12px;text-align:left;color:#5d3a00;margin-bottom:4px}
+.s12o:first-of-type{border-color:#e6a800;background:rgba(230,168,0,.06)}
+.s12o:last-of-type{background:rgba(52,199,89,.1);color:#2e7d32}
+.s12o:last-of-type::after{content:' ✓';font-weight:700}
+.s12w{background:#fff;border:2px solid #ffd54f;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s12w .wq{font-size:12px;font-weight:500;color:#5d3a00;flex:1}
+.s12w .wbadge{background:rgba(200,80,30,.1);color:#c85030;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 13: Ocean Floor ====== */
+.s13{background:linear-gradient(180deg,#e0f2f1 0%,#b2dfdb 100%);color:#004d40;border:2px solid #80cbc4;border-radius:12px;padding:20px;min-height:130px;position:relative}
+.s13 .label{font-size:11px;font-weight:600;color:#00897b;font-family:var(--m);margin-bottom:6px}
+.s13 .name{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:3px;color:#002d28}
+.s13 .desc{font-size:11px;color:#00796b;line-height:1.3}
+.s13 .check{display:inline-block;margin-top:8px;font-size:12px;color:#00897b;font-weight:600}
+.s13 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s13q{background:#e0f2f1;border:2px solid #80cbc4;border-radius:12px;padding:22px 20px}
+.s13q .qprompt{font-size:15px;font-weight:500;color:#004d40;margin-bottom:12px}
+.s13q .qprompt em{font-style:normal;background:#b2dfdb;padding:0 3px}
+.s13o{display:block;width:100%;padding:9px 12px;border:2px solid #b2dfdb;border-radius:8px;background:#fff;font-size:12px;text-align:left;color:#004d40;margin-bottom:4px}
+.s13o:first-of-type{border-color:#00897b;background:rgba(0,137,123,.06)}
+.s13o:last-of-type{background:#c8e6c9;color:#2e7d32}
+.s13o:last-of-type::after{content:' ✓';font-weight:700}
+.s13w{background:#fff;border:2px solid #80cbc4;border-radius:8px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s13w .wq{font-size:12px;font-weight:500;color:#004d40;flex:1}
+.s13w .wbadge{background:rgba(211,47,47,.08);color:#c62828;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 14: Concrete Minimal ====== */
+.s14{background:#f9f9f9;color:#2d2d2d;border:1px solid #e0e0e0;padding:20px;min-height:130px;position:relative}
+.s14 .label{font-size:10px;font-weight:500;color:#999;font-family:var(--m);margin-bottom:8px;text-transform:uppercase}
+.s14 .name{font-size:18px;font-weight:500;line-height:1.3;margin-bottom:3px;color:#1a1a1a;letter-spacing:-.3px}
+.s14 .desc{font-size:11px;color:#888;line-height:1.3}
+.s14 .check{display:inline-block;margin-top:8px;font-size:12px;color:#555;font-weight:500;border-bottom:1px solid #aaa}
+.s14 .status{position:absolute;top:10px;right:12px;font-size:12px}
+.s14q{background:#f9f9f9;border:1px solid #e0e0e0;padding:22px 20px}
+.s14q .qprompt{font-size:15px;font-weight:400;color:#2d2d2d;margin-bottom:12px}
+.s14q .qprompt em{font-style:normal;border-bottom:2px solid #aaa;padding-bottom:1px}
+.s14o{display:block;width:100%;padding:9px 12px;border:1px solid #e0e0e0;background:#fff;font-size:12px;text-align:left;color:#555;margin-bottom:4px}
+.s14o:first-of-type{border-color:#1a1a1a;border-width:2px;color:#1a1a1a}
+.s14o:last-of-type{background:#1a1a1a;color:#fff}
+.s14o:last-of-type::after{content:' ✓';font-weight:500}
+.s14w{background:#f9f9f9;border:1px solid #e0e0e0;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s14w .wq{font-size:12px;font-weight:400;color:#555;flex:1}
+.s14w .wbadge{background:#1a1a1a;color:#fff;padding:2px 8px;font-size:10px;font-weight:500;border-radius:0}
+
+/* ====== STYLE 15: Neon Tokyo ====== */
+.s15{background:#0d001a;color:#ff80c0;border:2px solid #ff40a0;border-radius:6px;padding:20px;min-height:130px;position:relative;box-shadow:0 0 20px rgba(255,64,160,.2)}
+.s15 .label{font-size:10px;font-weight:700;color:#ff80c0;font-family:var(--m);margin-bottom:6px}
+.s15 .name{font-size:16px;font-weight:700;line-height:1.3;margin-bottom:3px;color:#ff40a0}
+.s15 .desc{font-size:10px;color:#8040c0;line-height:1.3;font-family:var(--m)}
+.s15 .check{display:inline-block;margin-top:8px;font-size:11px;color:#ff40a0;font-weight:700}
+.s15 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s15q{background:#15002a;border:2px solid #ff40a0;border-radius:6px;padding:22px 20px;box-shadow:0 0 30px rgba(255,64,160,.1)}
+.s15q .qprompt{font-size:15px;font-weight:500;color:#ffc0e0;margin-bottom:12px}
+.s15q .qprompt em{font-style:normal;color:#ff80c0}
+.s15o{display:block;width:100%;padding:8px 12px;border:1px solid #402060;background:#120020;font-size:12px;text-align:left;color:#c080e0;margin-bottom:3px;border-radius:4px}
+.s15o:first-of-type{border-color:#ff40a0;background:rgba(255,64,160,.1);color:#ff80c0}
+.s15o:last-of-type{background:rgba(0,255,136,.1);color:#00ff88;border-color:rgba(0,255,136,.3)}
+.s15o:last-of-type::after{content:' ✓';font-weight:700}
+.s15w{background:#120020;border:1px solid #402060;border-radius:4px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s15w .wq{font-size:12px;font-weight:500;color:#c080e0;flex:1}
+.s15w .wbadge{background:rgba(255,64,160,.15);color:#ff80c0;border:1px solid #ff40a044;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 16: Vaporwave ====== */
+.s16{background:linear-gradient(135deg,#1a0033 0%,#003366 50%,#1a0033 100%);color:#80ffff;border:2px solid #40c0ff;border-radius:12px;padding:20px;min-height:130px;position:relative}
+.s16 .label{font-size:10px;font-weight:700;color:#40c0ff;font-family:var(--m);margin-bottom:6px;text-transform:uppercase}
+.s16 .name{font-size:16px;font-weight:700;line-height:1.3;margin-bottom:3px;color:#c0ffff;text-shadow:0 0 10px #40c0ff88}
+.s16 .desc{font-size:10px;color:#80c0e0;line-height:1.3;font-family:var(--m)}
+.s16 .check{display:inline-block;margin-top:8px;font-size:11px;color:#40c0ff;font-weight:700}
+.s16 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s16q{background:linear-gradient(135deg,#200044,#003366,#200044);border:2px solid #40c0ff;border-radius:12px;padding:22px 20px}
+.s16q .qprompt{font-size:15px;font-weight:500;color:#c0ffff;margin-bottom:12px}
+.s16q .qprompt em{font-style:normal;color:#ff80ff}
+.s16o{display:block;width:100%;padding:9px 12px;border:2px solid #204060;border-radius:8px;background:rgba(0,30,60,.6);font-size:12px;text-align:left;color:#80c0e0;margin-bottom:4px}
+.s16o:first-of-type{border-color:#40c0ff;background:rgba(64,192,255,.1);color:#80ffff}
+.s16o:last-of-type{background:rgba(0,255,136,.1);color:#00ff88}
+.s16o:last-of-type::after{content:' ✓';font-weight:700}
+.s16w{background:rgba(0,30,60,.6);border:2px solid #204060;border-radius:8px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s16w .wq{font-size:12px;font-weight:500;color:#80c0e0;flex:1}
+.s16w .wbadge{background:rgba(255,128,255,.15);color:#ff80ff;border:1px solid #ff80ff44;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 17: Parchment Classic ====== */
+.s17{background:#faf3e0;color:#4a3728;border:2px solid #c8a96e;border-radius:8px;padding:20px;min-height:130px;position:relative;box-shadow:0 2px 12px rgba(100,70,30,.08)}
+.s17 .label{font-size:11px;font-weight:600;color:#8b6914;font-family:Georgia,serif;margin-bottom:6px;font-style:italic}
+.s17 .name{font-size:18px;font-weight:700;line-height:1.3;margin-bottom:3px;color:#2d1a08;font-family:Georgia,serif}
+.s17 .desc{font-size:11px;color:#6b4e30;line-height:1.3;font-family:Georgia,serif}
+.s17 .check{display:inline-block;margin-top:8px;font-size:12px;color:#8b6914;font-weight:700;font-family:Georgia,serif;font-style:italic}
+.s17 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s17q{background:#fdf8ef;border:2px solid #c8a96e;border-radius:8px;padding:22px 20px}
+.s17q .qprompt{font-size:15px;font-weight:500;color:#4a3728;margin-bottom:12px;font-family:Georgia,serif}
+.s17q .qprompt em{font-style:normal;background:#faf3e0;border-bottom:2px solid #c8a96e}
+.s17o{display:block;width:100%;padding:9px 12px;border:1px solid #d4c4a0;border-radius:6px;background:#fffef8;font-size:12px;text-align:left;color:#4a3728;margin-bottom:4px;font-family:Georgia,serif}
+.s17o:first-of-type{border-color:#8b6914;background:rgba(139,105,20,.06)}
+.s17o:last-of-type{background:rgba(52,199,89,.1);color:#2e7d32}
+.s17o:last-of-type::after{content:' ✓';font-weight:700}
+.s17w{background:#fdf8ef;border:2px solid #c8a96e;border-radius:6px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s17w .wq{font-size:12px;font-weight:500;color:#4a3728;flex:1;font-family:Georgia,serif}
+.s17w .wbadge{background:rgba(180,80,40,.1);color:#b45030;border-radius:8px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 18: Arctic Frost ====== */
+.s18{background:linear-gradient(180deg,#e8f4fd 0%,#d0e8f8 100%);color:#1a4a6e;border:2px solid #b0d4f0;border-radius:16px;padding:20px;min-height:130px;position:relative}
+.s18 .label{font-size:10px;font-weight:700;color:#5090c0;font-family:var(--m);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.s18 .name{font-size:16px;font-weight:600;line-height:1.3;margin-bottom:3px;color:#0a2a50}
+.s18 .desc{font-size:11px;color:#4a80a0;line-height:1.3}
+.s18 .check{display:inline-block;margin-top:8px;font-size:12px;color:#5090c0;font-weight:600}
+.s18 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s18q{background:#f0f8ff;border:2px solid #b0d4f0;border-radius:16px;padding:22px 20px}
+.s18q .qprompt{font-size:15px;font-weight:500;color:#1a4a6e;margin-bottom:12px}
+.s18q .qprompt em{font-style:normal;background:#d0e8f8;padding:0 3px}
+.s18o{display:block;width:100%;padding:9px 12px;border:1.5px solid #c0d8f0;border-radius:10px;background:#fff;font-size:12px;text-align:left;color:#2a5a80;margin-bottom:4px}
+.s18o:first-of-type{border-color:#5090c0;background:rgba(80,144,192,.06)}
+.s18o:last-of-type{background:rgba(52,199,89,.1);color:#2e7d32}
+.s18o:last-of-type::after{content:' ✓';font-weight:700}
+.s18w{background:#fff;border:2px solid #b0d4f0;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s18w .wq{font-size:12px;font-weight:500;color:#2a5a80;flex:1}
+.s18w .wbadge{background:rgba(200,60,60,.08);color:#c04040;border-radius:8px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 19: Golden Hour ====== */
+.s19{background:linear-gradient(135deg,#fdf2e9 0%,#fce4c8 100%);color:#5d3a1a;border:2px solid #f0c080;border-radius:14px;padding:20px;min-height:130px;position:relative}
+.s19 .label{font-size:10px;font-weight:700;color:#d49440;font-family:Georgia,serif;margin-bottom:6px;text-transform:uppercase}
+.s19 .name{font-size:17px;font-weight:600;line-height:1.3;margin-bottom:3px;color:#3d1a08}
+.s19 .desc{font-size:11px;color:#8a5a30;line-height:1.3}
+.s19 .check{display:inline-block;margin-top:8px;font-size:12px;color:#d49440;font-weight:600}
+.s19 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s19q{background:#fef8f2;border:2px solid #f0c080;border-radius:14px;padding:22px 20px}
+.s19q .qprompt{font-size:15px;font-weight:500;color:#5d3a1a;margin-bottom:12px}
+.s19q .qprompt em{font-style:normal;background:#fce4c8;padding:0 3px}
+.s19o{display:block;width:100%;padding:9px 12px;border:1.5px solid #e8c898;border-radius:10px;background:#fff;font-size:12px;text-align:left;color:#5d3a1a;margin-bottom:4px}
+.s19o:first-of-type{border-color:#d49440;background:rgba(212,148,64,.06)}
+.s19o:last-of-type{background:rgba(52,199,89,.1);color:#2e7d32}
+.s19o:last-of-type::after{content:' ✓';font-weight:700}
+.s19w{background:#fff;border:2px solid #f0c080;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s19w .wq{font-size:12px;font-weight:500;color:#5d3a1a;flex:1}
+.s19w .wbadge{background:rgba(200,80,40,.1);color:#c05030;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700}
+
+/* ====== STYLE 20: Garden Neutra ====== */
+.s20{background:linear-gradient(180deg,#f7faf5 0%,#edf4e8 100%);color:#3a4a30;border:2px solid #c8d8b8;border-radius:16px;padding:20px;min-height:130px;position:relative;box-shadow:0 2px 16px rgba(80,120,60,.06)}
+.s20 .label{font-size:10px;font-weight:600;color:#7a9a60;font-family:var(--m);margin-bottom:6px;text-transform:uppercase}
+.s20 .name{font-size:16px;font-weight:600;line-height:1.3;margin-bottom:3px;color:#2a3a20}
+.s20 .desc{font-size:11px;color:#5a6a4a;line-height:1.3}
+.s20 .check{display:inline-block;margin-top:8px;font-size:12px;color:#7a9a60;font-weight:600}
+.s20 .status{position:absolute;top:12px;right:14px;font-size:14px}
+.s20q{background:#f7faf5;border:2px solid #c8d8b8;border-radius:16px;padding:22px 20px}
+.s20q .qprompt{font-size:15px;font-weight:500;color:#3a4a30;margin-bottom:12px}
+.s20q .qprompt em{font-style:normal;background:#d8e8c8;padding:0 2px}
+.s20o{display:block;width:100%;padding:9px 12px;border:2px solid #d8e8c8;border-radius:10px;background:#fff;font-size:12px;text-align:left;color:#4a5a3a;margin-bottom:4px}
+.s20o:first-of-type{border-color:#7a9a60;background:rgba(122,154,96,.06)}
+.s20o:last-of-type{background:rgba(52,199,89,.08);color:#2e7d32}
+.s20o:last-of-type::after{content:' ✓';font-weight:700}
+.s20w{background:#fff;border:2px solid #c8d8b8;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.s20w .wq{font-size:12px;font-weight:500;color:#4a5a3a;flex:1}
+.s20w .wbadge{background:rgba(200,80,60,.08);color:#c05040;border-radius:8px;padding:2px 8px;font-size:10px;font-weight:700}
+
+.legend{margin-top:6px;font-size:11px;color:#666;display:flex;gap:16px;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px}
+
+@media(max-width:600px){
+  .head{padding:36px 16px 28px}
+  .row{grid-template-columns:1fr}
+  .grid{gap:36px;padding:0 12px 40px}
+}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>Grammar Game · 20 UI Style Options</h1>
+  <p>Each row: phase card → question card → wrong-bank entry. Pick a number.</p>
+</div>
+
+<div class="grid">
+
+<div class="style-section"><h2>1. Apple Education</h2><div class="sub">#fff bg · #0071e3 accent · 8px radius · system fonts — current game</div>
+<div class="row">
+  <div class="s1"><span class="status">🔒</span><div class="label">PHASE 02</div><div class="name">Prepositions: In / On / At</div><div class="desc">Core spatial · 24 questions<br>0/24 (≥17 needed)</div><div class="check">Locked</div></div>
+  <div class="s1q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s1o">A. in</div><div class="s1o">B. on</div><div class="s1o">C. at</div><div class="s1o">D. by</div></div>
+  <div class="s1w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>2. Warm Terra</h2><div class="sub">#fefaf6 cream · warm brown · 16px radius · paper shadow</div>
+<div class="row">
+  <div class="s2"><span class="status">🔒</span><div class="label">STEP 02</div><div class="name">In, On, At — Place & Time</div><div class="desc">Core prepositions · 24 exercises<br>0/24 (≥17 needed)</div><div class="check">Locked</div></div>
+  <div class="s2q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s2o">A. in</div><div class="s2o">B. on</div><div class="s2o">C. at</div><div class="s2o">D. by</div></div>
+  <div class="s2w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>3. Brutal Neon</h2><div class="sub">#111 black · neon green + hot pink · sharp corners · offset shadows</div>
+<div class="row">
+  <div class="s3"><span class="status">🔒</span><div class="label">MODULE_02</div><div class="name">PREPOSITIONS::IN/ON/AT</div><div class="desc">CORE_SPATIAL · 24Q<br>0/24 PASSED (≥17)</div><div class="check">LOCKED ▸</div></div>
+  <div class="s3q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s3o">A. in</div><div class="s3o">B. on</div><div class="s3o">C. at</div><div class="s3o">D. by</div></div>
+  <div class="s3w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>4. Eden Glass</h2><div class="sub">#0A0612 dark · purple/fuchsia gradient · glass morphism</div>
+<div class="row">
+  <div class="s4"><span class="status">🔒</span><div class="label">PHASE 02</div><div class="name">In / On / At</div><div class="desc">Spatial + Temporal Core · 24Q<br>0/24 correct (need ≥17)</div><div class="check">Locked</div></div>
+  <div class="s4q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s4o">A. in</div><div class="s4o">B. on</div><div class="s4o">C. at</div><div class="s4o">D. by</div></div>
+  <div class="s4w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>5. Ghibli Forest</h2><div class="sub">moss green · serif · rounded 20px · cozy book feel</div>
+<div class="row">
+  <div class="s5"><span class="status">🔒</span><div class="label">CHAPTER 2</div><div class="name">In, On, At — Place &amp; Time</div><div class="desc">Core spatial prepositions<br>0/24 (≥17 needed)</div><div class="check">Locked</div></div>
+  <div class="s5q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s5o">A. in</div><div class="s5o">B. on</div><div class="s5o">C. at</div><div class="s5o">D. by</div></div>
+  <div class="s5w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>6. Terminal CRT</h2><div class="sub">#0a0f0a green-black · monospace · CRT glow</div>
+<div class="row">
+  <div class="s6"><span class="status">▸</span><div class="label">$ ./MODULE_02.SH</div><div class="name">PIPE: in/on/at</div><div class="desc">LOADING 24 Q...<br>[0/24] STATUS: LOCKED</div><div class="check">run unlock ▸</div></div>
+  <div class="s6q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s6o">(A) in</div><div class="s6o">(B) on</div><div class="s6o">(C) at</div><div class="s6o">(D) by</div></div>
+  <div class="s6w"><div class="wq">BUG: I'll meet you ___ Mon.→fix="on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>7. Brutalist Paper</h2><div class="sub">#f5f0e8 craft · black offset shadows · Georgia</div>
+<div class="row">
+  <div class="s7"><span class="status">🔒</span><div class="label">BLOCK 02</div><div class="name">PREPOSITIONS IN/ON/AT</div><div class="desc">Spatial+Temporal · 24 drills<br>0|24 PASSED—BLOCKED</div><div class="check">LOCKED ▸</div></div>
+  <div class="s7q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s7o">A. in</div><div class="s7o">B. on</div><div class="s7o">C. at</div><div class="s7o">D. by</div></div>
+  <div class="s7w"><div class="wq">I'll meet you ___ Mon.→"on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>8. Cyber Y2K</h2><div class="sub">silver-blue gradient · frosted glass · 24px pills</div>
+<div class="row">
+  <div class="s8"><span class="status">🔒</span><div class="label">STEP_02</div><div class="name">Prepositions: In, On, At</div><div class="desc">Core spatial+temporal · 24Q<br>0/24 unlocked (17+)</div><div class="check">locked</div></div>
+  <div class="s8q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s8o">A. in</div><div class="s8o">B. on</div><div class="s8o">C. at</div><div class="s8o">D. by</div></div>
+  <div class="s8w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>9. Mono Noir</h2><div class="sub">#fff+#000 only · hairline borders · 300 weight · editorial</div>
+<div class="row">
+  <div class="s9"><span class="status" style="bottom:14px;top:auto">locked</span><div class="label">MODULE · 02</div><div class="name">Prepositions:<br>In, On, At</div><div class="desc">Core spatial &amp; temporal — 24 questions. 0/24 passed.</div><div class="check">locked</div></div>
+  <div class="s9q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s9o">A. in</div><div class="s9o">B. on</div><div class="s9o">C. at</div><div class="s9o">D. by</div></div>
+  <div class="s9w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>10. Sakura Light</h2><div class="sub">soft pink · serif · 18px radius · gentle</div>
+<div class="row">
+  <div class="s10"><span class="status">🔒</span><div class="label">PHASE 02</div><div class="name">In, On, At — Place & Time</div><div class="desc">Core prepositions · 24Q<br>0/24 (≥17 needed)</div><div class="check">Locked</div></div>
+  <div class="s10q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s10o">A. in</div><div class="s10o">B. on</div><div class="s10o">C. at</div><div class="s10o">D. by</div></div>
+  <div class="s10w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>11. Midnight Ink</h2><div class="sub">#050510 navy · blue accents · 12px corners</div>
+<div class="row">
+  <div class="s11"><span class="status">🔒</span><div class="label">PHASE_02</div><div class="name">Prepositions: In / On / At</div><div class="desc">Spatial + Temporal · 24Q<br>0/24 passed (≥17)</div><div class="check">Locked</div></div>
+  <div class="s11q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s11o">A. in</div><div class="s11o">B. on</div><div class="s11o">C. at</div><div class="s11o">D. by</div></div>
+  <div class="s11w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>12. Solar Flare</h2><div class="sub">golden yellow · warm amber · 16px radius</div>
+<div class="row">
+  <div class="s12"><span class="status">🔒</span><div class="label">STEP 2</div><div class="name">In, On, At — Place & Time</div><div class="desc">Core prepositions · 24<br>0/24 (≥17 needed)</div><div class="check">Locked</div></div>
+  <div class="s12q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s12o">A. in</div><div class="s12o">B. on</div><div class="s12o">C. at</div><div class="s12o">D. by</div></div>
+  <div class="s12w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>13. Ocean Floor</h2><div class="sub">teal green · mint · 12px corners · calm</div>
+<div class="row">
+  <div class="s13"><span class="status">🔒</span><div class="label">PHASE 02</div><div class="name">In, On, At — Place & Time</div><div class="desc">Core prepositions · 24Q<br>0/24 (≥17)</div><div class="check">Locked</div></div>
+  <div class="s13q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s13o">A. in</div><div class="s13o">B. on</div><div class="s13o">C. at</div><div class="s13o">D. by</div></div>
+  <div class="s13w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>14. Concrete Minimal</h2><div class="sub">#f9f9f9 off-white · 1px borders · clean</div>
+<div class="row">
+  <div class="s14"><span class="status">🔒</span><div class="label">STAGE 02</div><div class="name">Prepositions: In, On, At</div><div class="desc">Core spatial — 24 questions.<br>0 of 24 passed.</div><div class="check">Locked</div></div>
+  <div class="s14q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s14o">A. in</div><div class="s14o">B. on</div><div class="s14o">C. at</div><div class="s14o">D. by</div></div>
+  <div class="s14w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>15. Neon Tokyo</h2><div class="sub">#0d001a deep purple · hot pink neon · vapor</div>
+<div class="row">
+  <div class="s15"><span class="status">🔒</span><div class="label">STAGE_02</div><div class="name">PREPOSITIONS in/on/at</div><div class="desc">CORE_SPATIAL_24Q<br>0/24 PASSED</div><div class="check">Locked ▸</div></div>
+  <div class="s15q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s15o">A. in</div><div class="s15o">B. on</div><div class="s15o">C. at</div><div class="s15o">D. by</div></div>
+  <div class="s15w"><div class="wq">I'll meet you ___ Monday.→"on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>16. Vaporwave</h2><div class="sub">purple-blue gradient · cyan glow · retro synth</div>
+<div class="row">
+  <div class="s16"><span class="status">🔒</span><div class="label">PHASE_02</div><div class="name">Prepositions: In/On/At</div><div class="desc">Core spatial · 24Q<br>0/24 (≥17 required)</div><div class="check">Locked</div></div>
+  <div class="s16q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s16o">A. in</div><div class="s16o">B. on</div><div class="s16o">C. at</div><div class="s16o">D. by</div></div>
+  <div class="s16w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>17. Parchment Classic</h2><div class="sub">cream paper · gold trim · serif · scholarly</div>
+<div class="row">
+  <div class="s17"><span class="status">🔒</span><div class="label">Chapter II</div><div class="name">In, On, At — Place &amp; Time</div><div class="desc">Core prepositions of location<br>0/24 completed</div><div class="check">Locked</div></div>
+  <div class="s17q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s17o">A. in</div><div class="s17o">B. on</div><div class="s17o">C. at</div><div class="s17o">D. by</div></div>
+  <div class="s17w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>18. Arctic Frost</h2><div class="sub">ice blue · crisp white · 16px · Scandinavian</div>
+<div class="row">
+  <div class="s18"><span class="status">🔒</span><div class="label">STAGE 02</div><div class="name">Prepositions: In / On / At</div><div class="desc">Core spatial · 24Q<br>0/24 (≥17 needed)</div><div class="check">Locked</div></div>
+  <div class="s18q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s18o">A. in</div><div class="s18o">B. on</div><div class="s18o">C. at</div><div class="s18o">D. by</div></div>
+  <div class="s18w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>19. Golden Hour</h2><div class="sub">warm sunset · ochre · 14px pill · photographic</div>
+<div class="row">
+  <div class="s19"><span class="status">🔒</span><div class="label">PHASE 02</div><div class="name">In, On, At — Place &amp; Time</div><div class="desc">Core prepositions · 24Q<br>0/24 (≥17 needed)</div><div class="check">Locked</div></div>
+  <div class="s19q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s19o">A. in</div><div class="s19o">B. on</div><div class="s19o">C. at</div><div class="s19o">D. by</div></div>
+  <div class="s19w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+<div class="style-section"><h2>20. Garden Neutra</h2><div class="sub">sage green · neutral white · 16px · botanical</div>
+<div class="row">
+  <div class="s20"><span class="status">🔒</span><div class="label">STAGE 02</div><div class="name">Prepositions: In, On, At</div><div class="desc">Core spatial — 24 drills.<br>0 of 24 passed (≥17).</div><div class="check">Locked</div></div>
+  <div class="s20q"><div class="qprompt">The meeting starts <em>___</em> 3 PM.</div><div class="s20o">A. in</div><div class="s20o">B. on</div><div class="s20o">C. at</div><div class="s20o">D. by</div></div>
+  <div class="s20w"><div class="wq">I'll meet you ___ Monday. → "on"</div><span class="wbadge">×2</span></div>
+</div></div>
+
+</div>
+</body>
+</html>

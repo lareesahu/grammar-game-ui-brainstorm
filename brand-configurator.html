@@ -153,11 +153,11 @@ footer{text-align:center;padding:40px 20px;color:#444;font-size:12px}
   <h2>4. Letter Spacing</h2>
   <div class="sub">Overall tracking value</div>
   <div class="kern-row" id="spaceGrid">
-    <div class="kern-opt selected" data-choice="s04" onclick="selectSpace(this,'s04')"><div class="word" id="spaceSnug">Gramlingo</div><div class="tag">+0.04em snug</div></div>
-    <div class="kern-opt" data-choice="sNeg" onclick="selectSpace(this,'sNeg')"><div class="word" id="spaceTight">Gramlingo</div><div class="tag">-0.02em tight display</div></div>
-    <div class="kern-opt" data-choice="s10" onclick="selectSpace(this,'s10')"><div class="word" id="spaceAiry">Gramlingo</div><div class="tag">+0.10em airy</div></div>
-    <div class="kern-opt" data-choice="s0" onclick="selectSpace(this,'s0')"><div class="word" id="spaceDefault">Gramlingo</div><div class="tag">0 default</div></div>
-    <div class="kern-opt" data-choice="sDual" onclick="selectSpace(this,'sDual')"><div class="word" id="spaceDual"><span style="letter-spacing:.04em">GRAM</span><span style="letter-spacing:-.02em">lingo</span></div><div class="tag">Dual tracking</div></div>
+    <div class="kern-opt selected" data-choice="s00" onclick="selectSpace(this,'s00')"><div class="word" id="spaceSnug">Gramlingo</div><div class="tag">0 — tight & compact</div></div>
+    <div class="kern-opt" data-choice="s08" onclick="selectSpace(this,'s08')"><div class="word" id="spaceTight">G r a m l i n g o</div><div class="tag">+0.08em — normal</div></div>
+    <div class="kern-opt" data-choice="s18" onclick="selectSpace(this,'s18')"><div class="word" id="spaceAiry">G  r  a  m  l  i  n  g  o</div><div class="tag">+0.18em — noticeably loose</div></div>
+    <div class="kern-opt" data-choice="s30" onclick="selectSpace(this,'s30')"><div class="word" id="spaceWide">G   r   a   m   l   i   n   g   o</div><div class="tag">+0.30em — airy display</div></div>
+    <div class="kern-opt" data-choice="s45" onclick="selectSpace(this,'s45')"><div class="word" id="spaceDisplay">G    r    a    m    l    i    n    g    o</div><div class="tag">+0.45em — dramatic luxury</div></div>
   </div>
 </div>
 
@@ -207,6 +207,39 @@ footer{text-align:center;padding:40px 20px;color:#444;font-size:12px}
   </div>
 </div>
 
+<!-- ===== 7. UX/UI COMPONENTS ===== -->
+<div class="section">
+  <h2>7. UX/UI Components</h2>
+  <div class="sub">Button shapes, card styles, interaction patterns</div>
+  <div class="grid" id="uiGrid">
+    <div class="card selected" data-choice="pills" onclick="selectUI(this,'pills')">
+      <h3>A. Soft Pills</h3>
+      <div class="preview"><span style="display:inline-block;padding:8px 22px;border-radius:20px;background:#7ec8a0;color:#1a2a22;font-size:13px;font-weight:700;margin:2px">Primary</span><span style="display:inline-block;padding:8px 22px;border-radius:20px;border:2px solid #7ec8a0;color:#7ec8a0;font-size:13px;font-weight:700;margin:2px">Outline</span></div>
+      <div class="specs">18-20px pill radius. Friendly, modern. Gramlin default.</div>
+    </div>
+    <div class="card" data-choice="sharp" onclick="selectUI(this,'sharp')">
+      <h3>B. Sharp Industrial</h3>
+      <div class="preview"><span style="display:inline-block;padding:8px 18px;border-radius:2px;background:#ff6b35;color:#fff;font-size:13px;font-weight:900;margin:2px;box-shadow:4px 4px 0 #1a1a1a">LOCKED</span><span style="display:inline-block;padding:8px 18px;border-radius:2px;border:2px solid #2d2d2d;color:#1a1a1a;font-size:13px;font-weight:600;margin:2px">OPTION</span></div>
+      <div class="specs">Offset shadows. Heavy borders. Brutalist character.</div>
+    </div>
+    <div class="card" data-choice="frosted" onclick="selectUI(this,'frosted')">
+      <h3>C. Frosted Glass</h3>
+      <div class="preview"><span style="display:inline-block;padding:8px 20px;border-radius:24px;background:rgba(255,255,255,.7);border:2px solid #c0d0f0;color:#1e3a5f;font-size:13px;font-weight:700;margin:2px;backdrop-filter:blur(8px)">Primary</span><span style="display:inline-block;padding:8px 20px;border-radius:24px;background:rgba(255,255,255,.4);border:2px solid #c0d0f0;color:#1e3a5f;font-size:13px;margin:2px">Outline</span></div>
+      <div class="specs">Y2K glossy, 24px radius, inset highlights.</div>
+    </div>
+    <div class="card" data-choice="editorial" onclick="selectUI(this,'editorial')">
+      <h3>D. Editorial Hairlines</h3>
+      <div class="preview"><span style="display:inline-block;padding:8px 20px;border:1px solid #000;background:#fff;color:#000;font-size:12px;font-weight:400;margin:2px">Primary</span><span style="display:inline-block;padding:8px 20px;border:1px solid #000;background:#000;color:#fff;font-size:12px;font-weight:300;margin:2px">Invert</span></div>
+      <div class="specs">1px borders, 0 radius, 300 weight. Mono Noir style.</div>
+    </div>
+    <div class="card" data-choice="ghibli" onclick="selectUI(this,'ghibli')">
+      <h3>E. Ghibli Soft</h3>
+      <div class="preview"><span style="display:inline-block;padding:8px 20px;border-radius:16px;background:#fff;border:2px solid #b8d4a8;color:#2d4a22;font-size:12px;font-weight:600;margin:2px;font-family:Georgia,serif">Enter</span><span style="display:inline-block;padding:8px 20px;border-radius:16px;background:#6b9b4a;color:#fff;font-size:12px;font-weight:700;margin:2px;font-family:Georgia,serif">Start</span></div>
+      <div class="specs">Forest green, serif, 16-20px radius. Storybook feel.</div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== LIVE PREVIEW ===== -->
 <div class="section">
   <h2>Live Preview</h2>
@@ -233,11 +266,11 @@ footer{text-align:center;padding:40px 20px;color:#444;font-size:12px}
       <span style="width:12px"></span>
       <label>Spacing:</label>
       <select onchange="setLS(this.value)" id="lsSelect">
-        <option value=".04">+0.04em</option>
-        <option value="0">0</option>
-        <option value="-.02">-0.02em</option>
-        <option value=".10">+0.10em</option>
-        <option value=".15">+0.15em</option>
+        <option value="0">0em — tight</option>
+        <option value=".08">0.08em — normal</option>
+        <option value=".18">0.18em — loose</option>
+        <option value=".30">0.30em — airy</option>
+        <option value=".45">0.45em — display</option>
       </select>
     </div>
 
@@ -268,8 +301,8 @@ footer{text-align:center;padding:40px 20px;color:#444;font-size:12px}
 <footer>Gramlingo Brand Configurator v2 · All choices yours</footer>
 
 <script>
-let picks={icon:'pencil',font:'baloo',kern:'split',space:'s04',palette:'mint',type:'nunito'};
-let weight=800, caps='normal', ls='.04';
+let picks={icon:'pencil',font:'baloo',kern:'split',space:'s00',palette:'mint',type:'nunito',ui:'pills'};
+let weight=800, caps='normal', ls='0';
 
 const fonts={baloo:"'Baloo 2',cursive",fredoka:"'Fredoka One',cursive",poppins:"'Poppins',sans-serif",nunito:"'Nunito',sans-serif",comic:"'Comic Neue',cursive"};
 const palettes={
@@ -282,13 +315,14 @@ const palettes={
 const bodyFonts={nunito:"'Nunito',sans-serif",inter:"'Inter',sans-serif",dmsans:"'DM Sans',sans-serif",atkinson:"'Atkinson Hyperlegible',sans-serif",system:"system-ui,-apple-system,sans-serif"};
 
 // Selection handlers
-function sel(gridId,el,key,val){picks[key]=val;document.querySelectorAll('#'+gridId+' .card,'+gridId+' .kern-opt').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');updateKerning();updatePreview()}
+function sel(gridId,el,key,val){picks[key]=val;document.querySelectorAll('#'+gridId+' .card, #'+gridId+' .kern-opt').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');updateKerning();updatePreview()}
 function selectIcon(el,val){sel('#iconGrid',el,'icon',val)}
 function selectFont(el,val){sel('#fontGrid',el,'font',val)}
 function selectKern(el,val){sel('#kernGrid',el,'kern',val)}
 function selectSpace(el,val){sel('#spaceGrid',el,'space',val)}
 function selectPalette(el,val){sel('#paletteGrid',el,'palette',val)}
 function selectType(el,val){sel('#typeGrid',el,'type',val)}
+function selectUI(el,val){sel('#uiGrid',el,'ui',val)}
 
 function setWeight(w){weight=w;document.querySelectorAll('.controls button[id^=w]').forEach(b=>b.classList.remove('active'));document.getElementById('w'+w).classList.add('active');updatePreview()}
 function setCaps(c){caps=c;['normal','lowercase','uppercase','capitalize'].forEach(v=>document.getElementById('cap'+v.charAt(0).toUpperCase()+v.slice(1)).classList.remove('active'));document.getElementById('cap'+c.charAt(0).toUpperCase()+c.slice(1)).classList.add('active');updatePreview()}

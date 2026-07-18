@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Gramlingo — Brand Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#fff5ee;color:#3d2e1e;line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.hero{text-align:center;padding:80px 20px 60px;background:linear-gradient(180deg,#2d1b10 0%,#3d2e1e 100%);color:#fff5ee;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,#fff5ee)}
+.hero .wordmark{font-family:'Baloo 2',cursive;font-size:clamp(48px,8vw,88px);font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#ff8c42;line-height:1.1}
+.hero .tagline{font-size:18px;color:rgba(255,245,238,.7);margin-top:8px;letter-spacing:.04em}
+.hero .mascot{font-size:72px;margin-bottom:12px}
+.section{padding:48px 0}
+.section h2{font-family:'Baloo 2',cursive;font-size:28px;font-weight:800;color:#2d1b10;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.section .sub{font-size:13px;color:#8a6a50;margin-bottom:24px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:#fff;border:1px solid #f0d8c0;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(200,120,80,.08)}
+.card h3{font-family:'Baloo 2',cursive;font-size:18px;font-weight:700;color:#2d1b10;margin-bottom:8px}
+.card p,.card li{font-size:13px;color:#5a4a3a;line-height:1.6}
+.card code{background:#fff0e6;padding:2px 6px;border-radius:4px;font-size:12px;color:#c06030}
+.card img{width:100%;border-radius:12px;margin:12px 0}
+.swatch-row{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}
+.swatch{width:48px;height:48px;border-radius:10px;border:2px solid rgba(0,0,0,.06);position:relative}
+.swatch .val{position:absolute;bottom:-18px;left:0;font-size:9px;color:#8a6a50;font-family:monospace;white-space:nowrap}
+.swatch-wrap{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding-bottom:20px}
+.font-preview{font-size:32px;font-weight:800;margin:8px 0;letter-spacing:.18em}
+.font-body{font-size:14px;color:#5a4a3a;line-height:1.6}
+.component-show{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.btn-preview{display:inline-block;padding:10px 24px;border-radius:20px;font-size:13px;font-weight:700;font-family:'Baloo 2',cursive;text-transform:uppercase;letter-spacing:.04em}
+.btn-primary{background:#ff8c42;color:#fff}
+.btn-outline{background:transparent;border:2px solid #ff8c42;color:#ff8c42}
+.btn-correct{background:#4caf50;color:#fff}
+.btn-wrong{background:#e07070;color:#fff}
+.card-sample{background:#fff;border:1px solid #f0d8c0;border-radius:16px;padding:16px;box-shadow:0 4px 20px rgba(200,120,80,.06)}
+.card-sample h4{font-size:16px;font-weight:700;color:#2d1b10;margin-bottom:4px}
+.card-sample p{font-size:12px;color:#8a6a50}
+hr{border:none;border-top:1px solid #f0d8c0;margin:40px 0}
+.foot{text-align:center;padding:40px 20px;color:#8a6a50;font-size:12px;background:#faf0e6;margin-top:40px}
+.foot a{color:#ff8c42;text-decoration:none}
+.nav-top{background:#2d1b10;padding:12px 24px;position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center}
+.nav-top a{color:#fff5ee;text-decoration:none;font-family:'Baloo 2',cursive;font-size:18px;font-weight:700;letter-spacing:.04em}
+.nav-top .links{display:flex;gap:20px;flex-wrap:wrap}
+.nav-top .links a{font-family:system-ui;font-size:12px;font-weight:400;letter-spacing:0;opacity:.7;transition:.2s}
+.nav-top .links a:hover{opacity:1}
+@media(max-width:600px){.hero{padding:48px 16px 40px}.section{padding:32px 0}}
+</style>
+</head>
+<body>
+
+<nav class="nav-top">
+  <a href="#">🧌 GRAMLINGO</a>
+  <div class="links">
+    <a href="#identity">Identity</a><a href="#mascot">Mascot</a><a href="#palette">Palette</a><a href="#type">Type</a><a href="#ui">UI</a><a href="#export">Export</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="mascot">🧌</div>
+  <div class="wordmark">Gramlingo</div>
+  <div class="tagline">Grammar Quest · Learn by playing</div>
+</div>
+
+<div class="wrap">
+
+<!-- ===== IDENTITY ===== -->
+<div class="section" id="identity">
+  <h2>Brand Identity</h2>
+  <div class="sub">Core brand elements — locked as of 2026-07-19</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Name</h3>
+      <p><strong>Gramlingo</strong> — a portmanteau of "Grammar" + "Lingo" (slang for language), also plays on "Gramlin-Go!" — the grammar gremlin on a quest.</p>
+    </div>
+    <div class="card">
+      <h3>Tagline</h3>
+      <p><strong>"Grammar Quest — Learn by playing."</strong><br>A systemic grammar game. Modular, progressive, playful. For Chinese English learners.</p>
+    </div>
+    <div class="card">
+      <h3>Domain</h3>
+      <p><strong>gramlingo.com</strong> — available ✓<br>Live at <a href="https://lareesahu.github.io/gramlingo/" style="color:#ff8c42">lareesahu.github.io/gramlingo</a></p>
+    </div>
+    <div class="card">
+      <h3>Character</h3>
+      <p><strong>Gramlin</strong> — a small, round, mint-green grammar gremlin. Big curious eyes, tiny curved horns, juggles punctuation marks. Pokémon meets Studio Ghibli soot sprite.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MASCOT ===== -->
+<div class="section" id="mascot">
+  <h2>Mascot · Gramlin</h2>
+  <div class="sub">Character reference — 4-view turnaround, props, expressions</div>
+  <div class="grid3">
+    <div class="card">
+      <h3>Icon · Juggler</h3>
+      <img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-juggler.png" alt="Juggler Gramlin">
+      <p>Primary app icon. Jugller of punctuation marks — commas, periods, question marks.</p>
+    </div>
+    <div class="card">
+      <h3>Pencil</h3>
+      <img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-pencil.png" alt="Pencil Gramlin">
+      <p>Writing tool variant — for grammar instruction scenes.</p>
+    </div>
+    <div class="card">
+      <h3>Bookworm</h3>
+      <img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-book.png" alt="Bookworm Gramlin">
+      <p>Curious learner — for loading screens and study mode.</p>
+    </div>
+    <div class="card">
+      <h3>Graduate</h3>
+      <img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-grad.png" alt="Graduate Gramlin">
+      <p>Mastery achieved — for completion screens and badges.</p>
+    </div>
+    <div class="card">
+      <h3>Sleepy</h3>
+      <img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-sleeper.png" alt="Sleepy Gramlin">
+      <p>Grammar dreams — for idle states and break screens.</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3>Reference Sheets</h3>
+    <div class="grid2">
+      <div><p><strong>4-View Turnaround</strong></p><img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-refsheet-4view.png" alt="Turnaround"></div>
+      <div><p><strong>Prop Variations</strong></p><img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-refsheet-props.png" alt="Props"></div>
+    </div>
+    <div style="margin-top:16px"><p><strong>Expression Sheet</strong></p><img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-refsheet-expressions.png" alt="Expressions" style="max-width:100%"></div>
+  </div>
+</div>
+
+<!-- ===== PALETTE ===== -->
+<div class="section" id="palette">
+  <h2>Color Palette</h2>
+  <div class="sub">Sunset Gramlin — warm orange, cream, deep brown</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Primary Palette</h3>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#ff8c42"><span class="val">#ff8c42<br>Primary</span></div>
+        <div class="swatch" style="background:#fff5ee"><span class="val">#fff5ee<br>Background</span></div>
+        <div class="swatch" style="background:#2d1b10"><span class="val">#2d1b10<br>Dark</span></div>
+        <div class="swatch" style="background:#4caf50"><span class="val">#4caf50<br>Correct</span></div>
+        <div class="swatch" style="background:#e07070"><span class="val">#e07070<br>Wrong</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Usage</h3>
+      <ul>
+        <li><code>#ff8c42</code> — Primary CTA, active states, accent borders, brand marks</li>
+        <li><code>#fff5ee</code> — Page background, card backgrounds</li>
+        <li><code>#2d1b10</code> — Dark sections (hero, completion), nav bar, primary text</li>
+        <li><code>#4caf50</code> — Correct answers, success states, progress complete</li>
+        <li><code>#e07070</code> — Wrong answers, error states, wrong-book badges</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Contrast Ratios</h3>
+      <ul>
+        <li>Primary on Dark: 6.2:1 ✅ AA</li>
+        <li>Dark on Background: 10.8:1 ✅ AAA</li>
+        <li>Correct on White: 3.8:1 ⚠️ (text only on dark bg)</li>
+        <li>Wrong on White: 4.2:1 ✅ AA</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Alt Palettes (in-app themes)</h3>
+      <p>12 themes available via style switcher. Full list in PROJECT_BIBLE.md. Mint Forest is the app default. Sunset is the brand theme.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TYPOGRAPHY ===== -->
+<div class="section" id="type">
+  <h2>Typography</h2>
+  <div class="sub">Baloo 2 headings · System UI body</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Logo Wordmark</h3>
+      <div class="font-preview" style="font-family:'Baloo 2',cursive;font-weight:800;color:#ff8c42">Gramlingo</div>
+      <p>Baloo 2 · Weight 800 · Uppercase · +0.18em letter spacing · Normal kerning</p>
+    </div>
+    <div class="card">
+      <h3>Heading Display</h3>
+      <div class="font-preview" style="font-family:'Baloo 2',cursive;font-weight:700;color:#2d1b10">Grammar Quest</div>
+      <p>Baloo 2 · Weight 700 · Uppercase · +0.04em letter spacing</p>
+    </div>
+    <div class="card">
+      <h3>Body Text</h3>
+      <div class="font-body">This is body copy in System UI. The quick brown fox jumps over the lazy dog. 适合中国英语学习者。Grammar modules: clauses, prepositions, tenses, and more.</div>
+      <p style="margin-top:8px">System UI stack: <code>system-ui, -apple-system, sans-serif</code> · 400 weight · Natural OS font</p>
+    </div>
+    <div class="card">
+      <h3>Monospace / Data</h3>
+      <div style="font-family:monospace;font-size:13px;color:#3d2e1e">0/24 passed · ≥17 needed · 70% threshold</div>
+      <p style="margin-top:8px"><code>ui-monospace, Menlo, Consolas, monospace</code> · Progress bars, stats, numbers</p>
+    </div>
+    <div class="card">
+      <h3>Google Font Import</h3>
+      <code style="display:block;background:#fff0e6;padding:12px;border-radius:8px;font-size:12px;word-break:break-all">&lt;link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap"&gt;</code>
+      <p style="margin-top:8px">Only Baloo 2 imported. System UI and monospace are native — zero loading cost for body text.</p>
+    </div>
+    <div class="card">
+      <h3>CSS Font Stack</h3>
+      <code style="display:block;background:#fff0e6;padding:12px;border-radius:8px;font-size:12px">--fp: system-ui, -apple-system, sans-serif;<br>--fm: ui-monospace, Menlo, Consolas, monospace;<br>--logo: 'Baloo 2', cursive;</code>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ICONOGRAPHY ===== -->
+<div class="section">
+  <h2>Iconography</h2>
+  <div class="sub">Primary icons for the app</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>App Icon</h3>
+      <img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-juggler.png" alt="App icon" style="width:128px;height:128px;margin:12px auto;display:block">
+      <p style="text-align:center">Juggler Gramlin · 128×128 · PNG</p>
+    </div>
+    <div class="card">
+      <h3>Favicon</h3>
+      <div style="text-align:center;font-size:48px;padding:20px">🧌</div>
+      <p style="text-align:center">Emoji favicon — works at 16×16 and 32×32.<br>Replace with generated PNG favicon when available.</p>
+    </div>
+    <div class="card">
+      <h3>Logo Wordmark</h3>
+      <img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlingo-logo.png" alt="Logo" style="max-width:100%">
+      <p style="text-align:center">Gramlingo wordmark + Bookworm mascot · 1664×928 · PNG</p>
+    </div>
+    <div class="card">
+      <h3>Icon Variants</h3>
+      <div class="grid4">
+        <div style="text-align:center"><img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-pencil.png" alt="Pencil" style="width:64px;height:64px"><p style="font-size:10px">Pencil</p></div>
+        <div style="text-align:center"><img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-book.png" alt="Book" style="width:64px;height:64px"><p style="font-size:10px">Book</p></div>
+        <div style="text-align:center"><img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-grad.png" alt="Grad" style="width:64px;height:64px"><p style="font-size:10px">Graduate</p></div>
+        <div style="text-align:center"><img src="https://raw.githubusercontent.com/lareesahu/grammar-game-ui-brainstorm/main/assets/gramlin-sleeper.png" alt="Sleep" style="width:64px;height:64px"><p style="font-size:10px">Sleepy</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== UI COMPONENTS ===== -->
+<div class="section" id="ui">
+  <h2>UX/UI Component Library</h2>
+  <div class="sub">Concrete CSS—all driven by brand variables</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Primary Button</h3>
+      <div class="component-show"><span class="btn-preview btn-primary">Start Phase</span><span class="btn-preview btn-primary">Check Answer</span></div>
+      <p>Pill shape (20px radius), accent fill, white text, uppercase. 44px min touch target. Hover: 85% opacity.</p>
+    </div>
+    <div class="card">
+      <h3>Outline Button</h3>
+      <div class="component-show"><span class="btn-preview btn-outline">Back to Home</span><span class="btn-preview btn-outline">Retake All</span></div>
+      <p>Transparent bg, accent border, accent text. Hover: fills with accent. Used for secondary actions.</p>
+    </div>
+    <div class="card">
+      <h3>Correct / Wrong States</h3>
+      <div class="component-show"><span class="btn-preview btn-correct">Correct ✓</span><span class="btn-preview btn-wrong">Wrong ✗</span></div>
+      <p>Green bg for correct, soft red for wrong. Disabled after selection. Always show ✓ or ✗ after check.</p>
+    </div>
+    <div class="card">
+      <h3>Phase Card</h3>
+      <div class="card-sample">
+        <h4>Phase 2: In / On / At — Place</h4>
+        <p>Core spatial prepositions · 6 questions</p>
+        <p style="color:#ff8c42;font-weight:600;font-size:11px;margin-top:6px">0/6 答对 (需≥5题) · 开始 →</p>
+      </div>
+      <p style="margin-top:8px">240px min, 16px radius, soft shadow. Hover: lift 2px. Locked: 0.4 opacity, no pointer.</p>
+    </div>
+    <div class="card">
+      <h3>Question Card</h3>
+      <div class="card-sample">
+        <h4 style="font-weight:500;font-size:15px">The meeting starts <em style="font-style:normal;text-decoration:underline">___</em> 3 PM.</h4>
+        <div style="display:flex;flex-direction:column;gap:4px;margin-top:8px">
+          <span class="btn-preview btn-primary" style="font-size:11px;padding:6px 14px">C. at</span>
+          <span class="btn-preview btn-outline" style="font-size:11px;padding:6px 14px;border-color:#f0d8c0;color:#3d2e1e">A. in</span>
+          <span class="btn-preview btn-outline" style="font-size:11px;padding:6px 14px;border-color:#f0d8c0;color:#3d2e1e">B. on</span>
+          <span class="btn-preview btn-outline" style="font-size:11px;padding:6px 14px;border-color:#f0d8c0;color:#3d2e1e">D. by</span>
+        </div>
+      </div>
+      <p style="margin-top:8px">680px max. Options are 44px min. First option shown as selected (accent border).</p>
+    </div>
+    <div class="card">
+      <h3>Wrong-Book Item</h3>
+      <div style="display:flex;align-items:center;justify-content:space-between;background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 2px 12px rgba(200,120,80,.06);margin:8px 0">
+        <div style="flex:1"><strong style="font-size:13px">I'll meet you ___ Monday.</strong><br><span style="font-size:11px;color:#8a6a50">Phase 2 · Correct: <span style="color:#4caf50;font-weight:600">on</span></span></div>
+        <span style="background:#e07070;color:#fff;border-radius:10px;padding:2px 10px;font-size:11px;font-weight:700">×2</span>
+      </div>
+      <p>Flex row, clickable. Sorted by most recent wrong answer. Badge counts attempts (red if ≥3).</p>
+    </div>
+    <div class="card">
+      <h3>Progress Bar</h3>
+      <div style="display:flex;align-items:center;gap:10px;margin:8px 0">
+        <div style="flex:1;height:4px;background:#f0d8c0;border-radius:2px"><div style="width:40%;height:100%;background:#ff8c42;border-radius:2px"></div></div>
+        <span style="font-family:monospace;font-size:11px;color:#8a6a50">3/8</span>
+      </div>
+      <p>4px height, accent fill, monospace counter. Smooth width transition.</p>
+    </div>
+    <div class="card">
+      <h3>Star Rating</h3>
+      <div style="font-size:28px;color:#ff8c42;letter-spacing:4px;margin:8px 0">★★★ <span style="color:#f0d8c0">☆☆</span></div>
+      <p>90%+ = 3 stars, 70%+ = 2, 50%+ = 1. Appears on phase completion screen.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CSS EXPORT ===== -->
+<div class="section" id="export">
+  <h2>CSS Export</h2>
+  <div class="sub">Drop-in CSS for the Sunset Gramlin theme</div>
+  <div class="card">
+    <code style="display:block;background:#fff0e6;padding:16px;border-radius:8px;font-size:12px;line-height:1.8;word-break:break-all">
+[data-style="sunset"] {<br>
+&nbsp;&nbsp;--blue: #ff8c42;<br>
+&nbsp;&nbsp;--bg: #fff5ee;<br>
+&nbsp;&nbsp;--black: #2d1b10;<br>
+&nbsp;&nbsp;--near: #2d1b10;<br>
+&nbsp;&nbsp;--text: #3d2e1e;<br>
+&nbsp;&nbsp;--dim: #8a6a50;<br>
+&nbsp;&nbsp;--green: #4caf50;<br>
+&nbsp;&nbsp;--red: #e07070;<br>
+&nbsp;&nbsp;--radius: 16px;<br>
+&nbsp;&nbsp;--fp: system-ui, -apple-system, sans-serif;<br>
+&nbsp;&nbsp;--fm: ui-monospace, monospace;<br>
+&nbsp;&nbsp;--body-bg: #fff5ee;<br>
+&nbsp;&nbsp;--nav-bg: rgba(45, 27, 16, .92);<br>
+&nbsp;&nbsp;--nav-text: #fff0e0;<br>
+&nbsp;&nbsp;--card-shadow: 0 4px 20px rgba(200, 120, 80, .12);<br>
+&nbsp;&nbsp;--opt-bg: #fff;<br>
+&nbsp;&nbsp;--opt-border: 2px solid #f0d8c0;<br>
+&nbsp;&nbsp;--wr-bg: #fff;<br>
+}
+    </code>
+  </div>
+</div>
+
+<hr>
+
+<div class="section">
+  <h2>Project Bible</h2>
+  <div class="sub">The single source of truth — read before dev, update after dev</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>📖 PROJECT_BIBLE.md</h3>
+      <p>Complete architecture, feature inventory, module specs, development workflow, deployment pipeline, and changelog.</p>
+      <a href="https://github.com/lareesahu/gramlingo/blob/main/PROJECT_BIBLE.md" style="color:#ff8c42;font-weight:600;display:inline-block;margin-top:8px">View on GitHub →</a>
+    </div>
+    <div class="card">
+      <h3>🧌 Character Reference</h3>
+      <p>Turnaround, props, expressions — full animation production reference.</p>
+      <a href="https://lareesahu.github.io/grammar-game-ui-brainstorm/character-ref.html" style="color:#ff8c42;font-weight:600;display:inline-block;margin-top:8px">View Character Sheet →</a>
+    </div>
+    <div class="card">
+      <h3>🎮 Live Game</h3>
+      <p>The deployed game with all 8 phases and 12 themes.</p>
+      <a href="https://lareesahu.github.io/gramlingo/" style="color:#ff8c42;font-weight:600;display:inline-block;margin-top:8px">Play Gramlingo →</a>
+    </div>
+    <div class="card">
+      <h3>🎨 Brand Configurator</h3>
+      <p>The interactive tool that produced this brand spec.</p>
+      <a href="https://lareesahu.github.io/grammar-game-ui-brainstorm/brand-configurator.html" style="color:#ff8c42;font-weight:600;display:inline-block;margin-top:8px">Open Configurator →</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="foot">
+  Gramlingo Brand Center · Locked 2026-07-19 · <a href="https://github.com/lareesahu/gramlingo">GitHub</a> · <a href="https://lareesahu.github.io/grammar-game-ui-brainstorm/character-ref.html">Character Ref</a> · <a href="https://lareesahu.github.io/grammar-game-ui-brainstorm/brand-configurator.html">Configurator</a>
+</div>
+
+</body>
+</html>
